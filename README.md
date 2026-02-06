@@ -5,8 +5,6 @@ Simple, lightweight Dark Mode toggle for the WordPress Admin Dashboard.
 ## Plugin Info
 
 - **Contributors:** alexanderwagnerdev
-- **Donate:** https://alexanderwagnerdev.com/
-- **Tags:** dark mode, admin, dashboard, ui, accessibility
 - **Requires at least:** 6.0
 - **Tested up to:** 6.9.1
 - **Requires PHP:** 7.4
