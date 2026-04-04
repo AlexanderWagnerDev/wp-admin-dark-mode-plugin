@@ -1,1 +1,429 @@
-placeholder_en_US
+# Copyright (C) 2026 AlexanderWagnerDev
+# This file is distributed under the GPLv2+.
+msgid ""
+msgstr ""
+"Project-Id-Version: DarkAdmin - Dark Mode for Adminpanel\n"
+"Report-Msgid-Bugs-To: https://alexanderwagnerdev.com\n"
+"POT-Creation-Date: 2026-04-04 22:40+0200\n"
+"PO-Revision-Date: 2026-04-04 22:40+0200\n"
+"Last-Translator: AlexanderWagnerDev <info@alexanderwagnerdev.com>\n"
+"Language-Team: AlexanderWagnerDev <info@alexanderwagnerdev.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: AWDev 2026\n"
+"X-Domain: darkadmin-dark-mode-for-adminpanel\n"
+
+#: darkadmin.php includes/settings-page.php
+msgid "DarkAdmin"
+msgstr "DarkAdmin"
+
+#: includes/settings-page.php
+msgid "Dark theme for the WordPress backend"
+msgstr "Dark theme for the WordPress backend"
+
+#: darkadmin.php
+msgid "Settings"
+msgstr "Settings"
+
+#: includes/settings-page.php
+msgid "Active"
+msgstr "Active"
+
+#: includes/settings-page.php
+msgid "Inactive"
+msgstr "Inactive"
+
+#: includes/settings-page.php
+msgid "General"
+msgstr "General"
+
+#: includes/settings-page.php
+msgid "Enable Dark Mode"
+msgstr "Enable Dark Mode"
+
+#: includes/settings-page.php
+msgid "Enables the dark theme for all admin pages. Administrators always see dark mode when this is active."
+msgstr "Enables the dark theme for all admin pages. Administrators always see dark mode when this is active."
+
+#: includes/settings-page.php
+msgid "Auto Dark Mode"
+msgstr "Auto Dark Mode"
+
+#: includes/settings-page.php
+msgid "Automatically darkens bright backgrounds and lightens dark text from unknown plugins. Requires Dark Mode to be active."
+msgstr "Automatically darkens bright backgrounds and lightens dark text from unknown plugins. Requires Dark Mode to be active."
+
+#: includes/settings-page.php
+msgid "Preset Themes"
+msgstr "Preset Themes"
+
+#: includes/settings-page.php
+msgid "Choose a preset to load its color palette. You can further customize colors below after loading."
+msgstr "Choose a preset to load its color palette. You can further customize colors below after loading."
+
+#: includes/settings-page.php
+msgid "Default"
+msgstr "Default"
+
+#: includes/settings-page.php
+msgid "Classic WP 6.x dark theme"
+msgstr "Classic WP 6.x dark theme"
+
+#: includes/settings-page.php
+msgid "Modern"
+msgstr "Modern"
+
+#: includes/settings-page.php
+msgid "WP Modern design language (dark)"
+msgstr "WP Modern design language (dark)"
+
+#: includes/settings-page.php
+msgid "✓ Active"
+msgstr "✓ Active"
+
+#: includes/settings-page.php
+msgid "Load Preset"
+msgstr "Load Preset"
+
+#: includes/settings-page.php
+msgid "Preview"
+msgstr "Preview"
+
+#: includes/settings-page.php
+msgid "User Access"
+msgstr "User Access"
+
+#: includes/settings-page.php
+msgid "All Users"
+msgstr "All Users"
+
+#: includes/settings-page.php
+msgid "Dark mode applies to everyone."
+msgstr "Dark mode applies to everyone."
+
+#: includes/settings-page.php
+msgid "Include"
+msgstr "Include"
+
+#: includes/settings-page.php
+msgid "Only selected users get dark mode."
+msgstr "Only selected users get dark mode."
+
+#: includes/settings-page.php
+msgid "Exclude"
+msgstr "Exclude"
+
+#: includes/settings-page.php
+msgid "Everyone except selected users gets dark mode."
+msgstr "Everyone except selected users gets dark mode."
+
+#: includes/settings-page.php
+msgid "Administrators are not listed here — they always have dark mode active."
+msgstr "Administrators are not listed here — they always have dark mode active."
+
+#: includes/settings-page.php
+msgid "No non-administrator users found. Create additional users to manage their dark mode access here."
+msgstr "No non-administrator users found. Create additional users to manage their dark mode access here."
+
+#: includes/settings-page.php
+msgid "Layout & Spacing"
+msgstr "Layout & Spacing"
+
+#: includes/settings-page.php
+msgid "Adjust spacing, button sizes, border radii and shadow. px values only for size fields; shadow accepts any valid CSS box-shadow value."
+msgstr "Adjust spacing, button sizes, border radii and shadow. px values only for size fields; shadow accepts any valid CSS box-shadow value."
+
+#: includes/settings-page.php
+msgid "Restore Default Layout"
+msgstr "Restore Default Layout"
+
+#: includes/settings-page.php
+msgid "Color Customization"
+msgstr "Color Customization"
+
+#: includes/settings-page.php
+msgid "Customize every color token individually. Changes are previewed live."
+msgstr "Customize every color token individually. Changes are previewed live."
+
+#: includes/settings-page.php
+msgid "Export Palette"
+msgstr "Export Palette"
+
+#: includes/settings-page.php
+msgid "Import Palette"
+msgstr "Import Palette"
+
+#: includes/settings-page.php
+msgid "Restore Default Colors"
+msgstr "Restore Default Colors"
+
+#: includes/settings-page.php
+msgid "Available CSS Variables"
+msgstr "Available CSS Variables"
+
+#: includes/settings-page.php
+msgid "Click to copy"
+msgstr "Click to copy"
+
+#: includes/enqueue.php
+msgid "Copied!"
+msgstr "Copied!"
+
+#: includes/settings-page.php
+msgid "Custom CSS"
+msgstr "Custom CSS"
+
+#: includes/settings-page.php
+msgid "Add your own CSS here, loaded after the dark mode stylesheet. All CSS variables are available."
+msgstr "Add your own CSS here, loaded after the dark mode stylesheet. All CSS variables are available."
+
+#: includes/settings-page.php
+msgid "Save Settings"
+msgstr "Save Settings"
+
+#: includes/settings-page.php
+msgid "Advanced"
+msgstr "Advanced"
+
+#: includes/settings-page.php
+msgid "Excluded Pages"
+msgstr "Excluded Pages"
+
+#: includes/settings-page.php
+msgid "One entry per line. Dark mode styles will not be loaded on matching admin pages."
+msgstr "One entry per line. Dark mode styles will not be loaded on matching admin pages."
+
+#: includes/settings-page.php
+msgid "Supports plain filenames (plugins.php) and custom page slugs (admin.php?page=my-plugin). Lines starting with # are treated as comments."
+msgstr "Supports plain filenames (plugins.php) and custom page slugs (admin.php?page=my-plugin). Lines starting with # are treated as comments."
+
+#: includes/settings-page.php
+msgid "The following pages are always excluded: %s"
+msgstr "The following pages are always excluded: %s"
+
+#: includes/settings-page.php
+msgid "You do not have sufficient permissions to access this page."
+msgstr "You do not have sufficient permissions to access this page."
+
+#: darkadmin.php
+msgid "✓ Dark Mode is active. Settings have been saved."
+msgstr "✓ Dark Mode is active. Settings have been saved."
+
+#: darkadmin.php
+msgid "✓ Settings saved. Dark Mode is disabled."
+msgstr "✓ Settings saved. Dark Mode is disabled."
+
+#: includes/defaults.php
+msgid "Backgrounds"
+msgstr "Backgrounds"
+
+#: includes/defaults.php
+msgid "Surfaces"
+msgstr "Surfaces"
+
+#: includes/defaults.php
+msgid "Borders"
+msgstr "Borders"
+
+#: includes/defaults.php
+msgid "Text"
+msgstr "Text"
+
+#: includes/defaults.php
+msgid "Links"
+msgstr "Links"
+
+#: includes/defaults.php
+msgid "Brand"
+msgstr "Brand"
+
+#: includes/defaults.php
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: includes/defaults.php
+msgid "CodeMirror"
+msgstr "CodeMirror"
+
+#: includes/defaults.php
+msgid "Background (Base)"
+msgstr "Background (Base)"
+
+#: includes/defaults.php
+msgid "Background (Admin Bar)"
+msgstr "Background (Admin Bar)"
+
+#: includes/defaults.php
+msgid "Background (Deep / Submenu)"
+msgstr "Background (Deep / Submenu)"
+
+#: includes/defaults.php
+msgid "Background (Darker / Editor Gutter)"
+msgstr "Background (Darker / Editor Gutter)"
+
+#: includes/defaults.php
+msgid "Surface 1 (Cards / Tables)"
+msgstr "Surface 1 (Cards / Tables)"
+
+#: includes/defaults.php
+msgid "Surface 2 (Inputs)"
+msgstr "Surface 2 (Inputs)"
+
+#: includes/defaults.php
+msgid "Surface 3 (Hover)"
+msgstr "Surface 3 (Hover)"
+
+#: includes/defaults.php
+msgid "Table Row Alternate"
+msgstr "Table Row Alternate"
+
+#: includes/defaults.php
+msgid "Plugin Inactive Row"
+msgstr "Plugin Inactive Row"
+
+#: includes/defaults.php
+msgid "Border"
+msgstr "Border"
+
+#: includes/defaults.php
+msgid "Border (Focus)"
+msgstr "Border (Focus)"
+
+#: includes/defaults.php
+msgid "Border (Hover)"
+msgstr "Border (Hover)"
+
+#: includes/defaults.php
+msgid "Primary Text"
+msgstr "Primary Text"
+
+#: includes/defaults.php
+msgid "Muted Text"
+msgstr "Muted Text"
+
+#: includes/defaults.php
+msgid "Soft Text (Row Actions)"
+msgstr "Soft Text (Row Actions)"
+
+#: includes/defaults.php
+msgid "Text on Primary / White"
+msgstr "Text on Primary / White"
+
+#: includes/defaults.php
+msgid "Link Color"
+msgstr "Link Color"
+
+#: includes/defaults.php
+msgid "Link Hover"
+msgstr "Link Hover"
+
+#: includes/defaults.php
+msgid "Primary / Buttons"
+msgstr "Primary / Buttons"
+
+#: includes/defaults.php
+msgid "Primary Hover"
+msgstr "Primary Hover"
+
+#: includes/defaults.php
+msgid "Success"
+msgstr "Success"
+
+#: includes/defaults.php
+msgid "Warning"
+msgstr "Warning"
+
+#: includes/defaults.php
+msgid "Danger / Error"
+msgstr "Danger / Error"
+
+#: includes/defaults.php
+msgid "Sidebar Background"
+msgstr "Sidebar Background"
+
+#: includes/defaults.php
+msgid "Sidebar Active Item"
+msgstr "Sidebar Active Item"
+
+#: includes/defaults.php
+msgid "Sidebar Text"
+msgstr "Sidebar Text"
+
+#: includes/defaults.php
+msgid "Code: Keyword"
+msgstr "Code: Keyword"
+
+#: includes/defaults.php
+msgid "Code: Operator / Bracket"
+msgstr "Code: Operator / Bracket"
+
+#: includes/defaults.php
+msgid "Code: Variable / Def"
+msgstr "Code: Variable / Def"
+
+#: includes/defaults.php
+msgid "Code: Property"
+msgstr "Code: Property"
+
+#: includes/defaults.php
+msgid "Code: Number / Atom"
+msgstr "Code: Number / Atom"
+
+#: includes/defaults.php
+msgid "Code: String"
+msgstr "Code: String"
+
+#: includes/defaults.php
+msgid "Code: String (alt)"
+msgstr "Code: String (alt)"
+
+#: includes/defaults.php
+msgid "Code: Comment"
+msgstr "Code: Comment"
+
+#: includes/defaults.php
+msgid "Code: Tag"
+msgstr "Code: Tag"
+
+#: includes/defaults.php
+msgid "Code: Attribute / Qualifier / Builtin"
+msgstr "Code: Attribute / Qualifier / Builtin"
+
+#: includes/defaults.php
+msgid "Code: Bracket"
+msgstr "Code: Bracket"
+
+#: includes/defaults.php
+msgid "Spacing (Small)"
+msgstr "Spacing (Small)"
+
+#: includes/defaults.php
+msgid "Spacing (Medium)"
+msgstr "Spacing (Medium)"
+
+#: includes/defaults.php
+msgid "Button Height"
+msgstr "Button Height"
+
+#: includes/defaults.php
+msgid "Input Height"
+msgstr "Input Height"
+
+#: includes/defaults.php
+msgid "Border Radius (Small)"
+msgstr "Border Radius (Small)"
+
+#: includes/defaults.php
+msgid "Border Radius (Medium)"
+msgstr "Border Radius (Medium)"
+
+#: includes/defaults.php
+msgid "Border Radius (Large)"
+msgstr "Border Radius (Large)"
+
+#: includes/defaults.php
+msgid "Shadow"
+msgstr "Shadow"
