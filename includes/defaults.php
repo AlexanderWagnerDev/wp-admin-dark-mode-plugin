@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Returns the default color palette.
+ * Classic (WP 6.x) color palette — used by the "classic" preset.
  *
  * @return array<string, string>
  */
@@ -70,7 +70,6 @@ function darkadmin_preset_colors(): array {
 		return $cache;
 	}
 	$cache = array(
-		'default' => darkadmin_default_colors(),
 		'modern'  => array(
 			'bg'              => '#1e1e1e',
 			'bg_bar'          => '#0c0c0c',
@@ -110,6 +109,7 @@ function darkadmin_preset_colors(): array {
 			'cm_attribute'    => '#ffcb6b',
 			'cm_bracket'      => '#89ddff',
 		),
+		'classic' => darkadmin_default_colors(),
 	);
 	return $cache;
 }
@@ -117,15 +117,41 @@ function darkadmin_preset_colors(): array {
 /**
  * Returns the CSS filename for a given preset slug.
  *
- * @param string $preset Preset slug (e.g. 'default', 'modern').
+ * @param string $preset Preset slug (e.g. 'classic', 'modern').
  * @return string CSS filename.
  */
 function darkadmin_preset_css_file( string $preset ): string {
-	$map = array(
-		'default' => 'darkadmin-dark.css',
+	$preset = darkadmin_normalize_preset_slug( $preset );
+	$map    = array(
+		'classic' => 'darkadmin-dark.css',
 		'modern'  => 'darkadmin-wp-modern.css',
 	);
-	return isset( $map[ $preset ] ) ? $map[ $preset ] : 'darkadmin-dark.css';
+	return $map[ $preset ];
+}
+
+/**
+ * Normalizes a preset slug (legacy "default" → "classic", unknown → modern).
+ *
+ * @param string $preset Raw preset slug.
+ * @return string
+ */
+function darkadmin_normalize_preset_slug( string $preset ): string {
+	if ( 'default' === $preset ) {
+		$preset = 'classic';
+	}
+	$allowed = array_keys( darkadmin_preset_colors() );
+	return in_array( $preset, $allowed, true ) ? $preset : DARKADMIN_DEFAULT_PRESET;
+}
+
+/**
+ * Whether the plugin was used before the 1.0.0 preset migration.
+ *
+ * @return bool
+ */
+function darkadmin_is_existing_install(): bool {
+	return false !== get_option( 'darkadmin_dark_mode_enabled', false )
+		|| false !== get_option( 'darkadmin_colors', false )
+		|| false !== get_option( 'darkadmin_auto_darken', false );
 }
 
 /**
@@ -355,8 +381,8 @@ function darkadmin_default_layout(): array {
 function darkadmin_preset_layout(): array {
 	$shared = darkadmin_default_layout();
 	return array(
-		'default' => $shared,
 		'modern'  => $shared,
+		'classic' => $shared,
 	);
 }
 
@@ -435,12 +461,9 @@ function darkadmin_sanitize_colors( $input ): array {
 	// '_preset' is an internal routing key, not a color token — excluded from output.
 	$preset = isset( $input['_preset'] )
 		? sanitize_key( (string) $input['_preset'] )
-		: 'default';
+		: DARKADMIN_DEFAULT_PRESET;
 
-	$allowed_presets = array_keys( darkadmin_preset_colors() );
-	if ( ! in_array( $preset, $allowed_presets, true ) ) {
-		$preset = 'default';
-	}
+	$preset = darkadmin_normalize_preset_slug( $preset );
 
 	$defaults = darkadmin_preset_colors()[ $preset ];
 	$output   = array();
@@ -478,13 +501,10 @@ function darkadmin_sanitize_layout( $input ): array {
 	// '_preset' is an internal routing key, not a layout token — excluded from output.
 	$preset = isset( $input['_preset'] )
 		? sanitize_key( (string) $input['_preset'] )
-		: 'default';
+		: DARKADMIN_DEFAULT_PRESET;
 
-	$presets = darkadmin_preset_layout();
-	if ( ! isset( $presets[ $preset ] ) ) {
-		$preset = 'default';
-	}
-
+	$preset   = darkadmin_normalize_preset_slug( $preset );
+	$presets  = darkadmin_preset_layout();
 	$defaults = $presets[ $preset ];
 	$var_map  = darkadmin_layout_variable_map();
 	$output   = array();
@@ -517,16 +537,17 @@ function darkadmin_sanitize_layout( $input ): array {
  * Generic helper: returns the fallback values for a given preset type and slug.
  *
  * @param string $type   Either 'colors' or 'layout'.
- * @param string $preset Preset slug (e.g. 'default', 'modern').
+ * @param string $preset Preset slug (e.g. 'classic', 'modern').
  * @return array<string, string>
  */
 function darkadmin_get_preset_fallbacks( string $type, string $preset ): array {
+	$preset = darkadmin_normalize_preset_slug( $preset );
 	if ( 'layout' === $type ) {
 		$presets = darkadmin_preset_layout();
-		return isset( $presets[ $preset ] ) ? $presets[ $preset ] : $presets['default'];
+		return $presets[ $preset ];
 	}
 	$presets = darkadmin_preset_colors();
-	return isset( $presets[ $preset ] ) ? $presets[ $preset ] : $presets['default'];
+	return $presets[ $preset ];
 }
 
 /**

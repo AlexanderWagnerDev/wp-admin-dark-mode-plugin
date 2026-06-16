@@ -21,19 +21,21 @@ function darkadmin_settings_page(): void {
 
 	$enabled          = (bool) get_option( 'darkadmin_dark_mode_enabled', false );
 	$auto_darken      = (bool) get_option( 'darkadmin_auto_darken', false );
-	$colors           = wp_parse_args( (array) get_option( 'darkadmin_colors', array() ), darkadmin_default_colors() );
-	$layout           = wp_parse_args( (array) get_option( 'darkadmin_layout', array() ), darkadmin_default_layout() );
+	$active_preset    = darkadmin_normalize_preset_slug( (string) get_option( 'darkadmin_preset', DARKADMIN_DEFAULT_PRESET ) );
+	$preset_colors    = darkadmin_preset_fallbacks( $active_preset );
+	$preset_layout    = darkadmin_preset_layout_fallbacks( $active_preset );
+	$colors           = wp_parse_args( (array) get_option( 'darkadmin_colors', array() ), $preset_colors );
+	$layout           = wp_parse_args( (array) get_option( 'darkadmin_layout', array() ), $preset_layout );
 	$custom           = get_option( 'darkadmin_custom_css', '' );
 	$allowed          = array_map( 'intval', (array) get_option( 'darkadmin_allowed_users', array() ) );
 	$user_access_mode = get_option( 'darkadmin_user_access_mode', 'all' );
-	$active_preset    = get_option( 'darkadmin_preset', 'default' );
 	$excluded_pages   = get_option( 'darkadmin_excluded_pages', '' );
 
 	$var_map         = darkadmin_css_variable_map();
-	$defaults        = darkadmin_default_colors();
+	$defaults        = $preset_colors;
 	$presets         = darkadmin_preset_colors();
 	$layout_map      = darkadmin_layout_variable_map();
-	$layout_defaults = darkadmin_default_layout();
+	$layout_defaults = $preset_layout;
 
 	$color_groups = array();
 	$grouped_vars = array();
@@ -49,23 +51,23 @@ function darkadmin_settings_page(): void {
 	$has_users        = ! empty( $selectable_users );
 
 	$preset_meta = array(
-		'default' => array(
-			'label'   => __( 'Default', 'darkadmin-dark-mode-for-adminpanel' ),
-			'desc'    => __( 'Classic WP 6.x dark theme', 'darkadmin-dark-mode-for-adminpanel' ),
-			'bg'      => '#1d2327',
-			'surface' => '#2c3338',
-			'primary' => '#2271b1',
-			'text'    => '#dcdcde',
-			'bar'     => '#1a1f24',
-		),
 		'modern'  => array(
 			'label'   => __( 'Modern', 'darkadmin-dark-mode-for-adminpanel' ),
-			'desc'    => __( 'WP Modern design language (dark)', 'darkadmin-dark-mode-for-adminpanel' ),
+			'desc'    => __( 'WP 7.0 design language — default', 'darkadmin-dark-mode-for-adminpanel' ),
 			'bg'      => '#1e1e1e',
 			'surface' => '#2a2a2a',
 			'primary' => '#3858e9',
 			'text'    => '#f0f0f0',
 			'bar'     => '#0c0c0c',
+		),
+		'classic' => array(
+			'label'   => __( 'Classic', 'darkadmin-dark-mode-for-adminpanel' ),
+			'desc'    => __( 'WP 6.x dark theme', 'darkadmin-dark-mode-for-adminpanel' ),
+			'bg'      => '#1d2327',
+			'surface' => '#2c3338',
+			'primary' => '#2271b1',
+			'text'    => '#dcdcde',
+			'bar'     => '#1a1f24',
 		),
 	);
 
@@ -127,6 +129,7 @@ function darkadmin_settings_page(): void {
 							</span>
 						</div>
 						<label class="adm-toggle">
+							<input type="hidden" name="darkadmin_dark_mode_enabled" value="0" />
 							<input type="checkbox" id="darkadmin_dark_mode_enabled" name="darkadmin_dark_mode_enabled" value="1"
 								<?php checked( true, $enabled ); ?> />
 							<span class="adm-slider" aria-hidden="true"></span>
@@ -145,6 +148,7 @@ function darkadmin_settings_page(): void {
 							</span>
 						</div>
 						<label class="adm-toggle">
+							<input type="hidden" name="darkadmin_auto_darken" value="0" />
 							<input type="checkbox" id="darkadmin_auto_darken" name="darkadmin_auto_darken" value="1"
 								<?php checked( true, $auto_darken ); ?> />
 							<span class="adm-slider" aria-hidden="true"></span>
@@ -193,7 +197,7 @@ function darkadmin_settings_page(): void {
 						</div><!-- .adm-preset-grid -->
 
 						<?php
-						$prev = $preset_meta[ $active_preset ];
+						$prev = $preset_meta[ $active_preset ] ?? $preset_meta['modern'];
 						?>
 						<div>
 							<p class="adm-preview-label"><?php esc_html_e( 'Preview', 'darkadmin-dark-mode-for-adminpanel' ); ?></p>
@@ -230,6 +234,8 @@ function darkadmin_settings_page(): void {
 					</div><!-- .adm-preset-layout -->
 
 					<input type="hidden" id="darkadmin_preset" name="darkadmin_preset" value="<?php echo esc_attr( $active_preset ); ?>" />
+					<input type="hidden" name="darkadmin_colors[_preset]" id="darkadmin_colors_preset" value="<?php echo esc_attr( $active_preset ); ?>" />
+					<input type="hidden" name="darkadmin_layout[_preset]" id="darkadmin_layout_preset" value="<?php echo esc_attr( $active_preset ); ?>" />
 				</div>
 			</div>
 
@@ -283,6 +289,7 @@ function darkadmin_settings_page(): void {
 						}
 						?>
 							>
+						<input type="hidden" name="darkadmin_allowed_users[]" value="" />
 						<?php foreach ( $selectable_users as $user ) : ?>
 							<label class="adm-user-item">
 								<input
@@ -347,7 +354,7 @@ function darkadmin_settings_page(): void {
 					<div class="adm-color-reset-row">
 						<button type="button" id="adm-reset-layout" class="button">
 							<span class="dashicons dashicons-image-rotate"></span>
-							<?php esc_html_e( 'Restore Default Layout', 'darkadmin-dark-mode-for-adminpanel' ); ?>
+							<?php esc_html_e( 'Restore Preset Layout', 'darkadmin-dark-mode-for-adminpanel' ); ?>
 						</button>
 					</div>
 				</div>
@@ -405,7 +412,7 @@ function darkadmin_settings_page(): void {
 					<div class="adm-color-reset-row">
 						<button type="button" id="adm-reset-colors" class="button">
 							<span class="dashicons dashicons-image-rotate"></span>
-							<?php esc_html_e( 'Restore Default Colors', 'darkadmin-dark-mode-for-adminpanel' ); ?>
+							<?php esc_html_e( 'Restore Preset Colors', 'darkadmin-dark-mode-for-adminpanel' ); ?>
 						</button>
 					</div>
 				</div>

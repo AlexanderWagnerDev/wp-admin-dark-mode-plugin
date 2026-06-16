@@ -5,6 +5,20 @@ All notable changes to DarkAdmin - Dark Mode for Adminpanel are documented in th
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
+## [0.3.0] - 2026-06-16
+
+### Changed
+- Modern preset is now the default for new installations (WP 7.0 design language)
+- Renamed "Default" preset to "Classic" (WP 6.x dark theme)
+- Existing installations keep the Classic preset after upgrade
+- Tested up to WordPress 7.0
+
+### Fixed
+- Dark Mode and Auto Dark Mode toggles can now be turned off reliably
+- Settings saved notice now appears after saving
+- Live color preview uses correct CSS variable names (`surface1` → `--adm-surface-1`, etc.)
+- Color/layout sanitization respects the active preset
+
 ## [0.2.2] - 2026-03-28
 
 ### Fixed

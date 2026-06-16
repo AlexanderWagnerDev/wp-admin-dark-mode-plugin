@@ -3,7 +3,7 @@
 [![WordPress](https://img.shields.io/badge/WordPress-6.3%2B-blue)](https://wordpress.org/)
 [![PHP](https://img.shields.io/badge/PHP-8.0%2B-blue)](https://www.php.net/)
 [![License](https://img.shields.io/badge/License-GPLv2%2B-green)](https://www.gnu.org/licenses/gpl-2.0.html)
-[![Version](https://img.shields.io/badge/Version-0.2.1-orange)](https://github.com/AlexanderWagnerDev/wp-darkadmin-plugin)
+[![Version](https://img.shields.io/badge/Version-0.3.0-orange)](https://github.com/AlexanderWagnerDev/wp-darkadmin-plugin)
 
 <img src="DarkAdmin-Logo.png" alt="DarkAdmin-Logo" width="250px"/>
 
@@ -20,7 +20,7 @@ A simple, lightweight Dark Mode plugin for the WordPress Admin Dashboard with fu
 - Custom CSS support using built-in CSS variables
 - Token-based design system for backgrounds, text, borders, buttons and states
 - Auto Dark Mode: automatically darkens bright plugin backgrounds not covered by the stylesheet
-- Preset Themes: choose between Default (WP 6.x) and Modern (WP 7.0) color palettes
+- Preset Themes: Modern (WP 7.0, default) and Classic (WP 6.x) color palettes
 - Per-user Dark Mode access control (Include / Exclude) with empty-state UI when no non-admin users exist
 - Excluded Pages: specify admin pages where dark mode should not be applied
 
@@ -47,6 +47,21 @@ A simple, lightweight Dark Mode plugin for the WordPress Admin Dashboard with fu
 ---
 
 ## Changelog
+
+## [0.3.0] - 2026-06-16
+
+### Changed
+- Modern preset is now the default for new installations (WP 7.0 design language)
+- Renamed "Default" preset to "Classic" (WP 6.x dark theme)
+- Existing installations keep the Classic preset after upgrade
+- Tested up to WordPress 7.0
+
+### Fixed
+- Dark Mode and Auto Dark Mode toggles can now be turned off reliably
+- Settings saved notice now appears after saving
+- Live color preview uses correct CSS variable names
+- Color/layout sanitization respects the active preset
+
 ## [0.2.1] - 2026-03-28
 
 ### Changed
@@ -206,7 +221,7 @@ Ein einfaches, schlankes Dark-Mode-Plugin für das WordPress Admin-Dashboard mit
 - Unterstützung für eigenes Custom CSS mit eingebauten CSS-Variablen
 - Token-basiertes Design-System für Hintergründe, Texte, Rahmen, Buttons und Statusfarben
 - Auto Dark Mode: Verdunkelt automatisch helle Plugin-Hintergründe, die vom Stylesheet nicht abgedeckt werden
-- Preset-Themes: Wechsel zwischen Default (WP 6.x) und Modern (WP 7.0) Farbpaletten
+- Preset-Themes: Modern (WP 7.0, Standard) und Classic (WP 6.x) Farbpaletten
 - Benutzerspezifische Dark-Mode-Zugriffskontrolle (Einschließen / Ausschließen) mit Empty-State-UI wenn keine Nicht-Admin-Benutzer vorhanden sind
 - Ausgeschlossene Seiten: Admin-Seiten angeben, auf denen Dark Mode nicht angewendet werden soll
 
@@ -221,6 +236,20 @@ Ein einfaches, schlankes Dark-Mode-Plugin für das WordPress Admin-Dashboard mit
 ---
 
 ## Changelog
+
+## 0.3.0
+
+### Geändert
+- Modern-Preset ist jetzt Standard für Neuinstallationen (WP-7.0-Design)
+- „Default“-Preset in „Classic“ umbenannt (WP-6.x-Dark-Theme)
+- Bestehende Installationen behalten nach dem Update das Classic-Preset
+- Getestet bis WordPress 7.0
+
+### Behoben
+- Dark-Mode- und Auto-Dark-Mode-Toggles lassen sich zuverlässig deaktivieren
+- Erfolgsmeldung nach dem Speichern erscheint wieder
+- Live-Farbvorschau nutzt korrekte CSS-Variablennamen
+- Farb-/Layout-Sanitization respektiert das aktive Preset
 
 ## 0.2.1
 

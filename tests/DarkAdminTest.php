@@ -12,6 +12,8 @@ class DarkAdminTest extends WP_UnitTestCase {
         delete_option( 'darkadmin_user_access_mode' );
         delete_option( 'darkadmin_allowed_users' );
         delete_option( 'darkadmin_colors' );
+        delete_option( 'darkadmin_preset' );
+        delete_option( 'darkadmin_db_version' );
     }
 
     // -------------------------------------------------------------------------
@@ -42,20 +44,20 @@ class DarkAdminTest extends WP_UnitTestCase {
     // darkadmin_preset_colors
     // -------------------------------------------------------------------------
 
-    public function test_preset_colors_contains_default_and_modern(): void {
+    public function test_preset_colors_contains_classic_and_modern(): void {
         $presets = darkadmin_preset_colors();
-        $this->assertArrayHasKey( 'default', $presets );
+        $this->assertArrayHasKey( 'classic', $presets );
         $this->assertArrayHasKey( 'modern', $presets );
     }
 
-    public function test_preset_colors_default_matches_default_colors(): void {
-        $this->assertSame( darkadmin_default_colors(), darkadmin_preset_colors()['default'] );
+    public function test_preset_colors_classic_matches_default_colors(): void {
+        $this->assertSame( darkadmin_default_colors(), darkadmin_preset_colors()['classic'] );
     }
 
     public function test_preset_colors_modern_has_all_keys(): void {
-        $default_keys = array_keys( darkadmin_default_colors() );
+        $classic_keys = array_keys( darkadmin_preset_colors()['classic'] );
         $modern_keys  = array_keys( darkadmin_preset_colors()['modern'] );
-        $this->assertSame( $default_keys, $modern_keys );
+        $this->assertSame( $classic_keys, $modern_keys );
     }
 
     public function test_preset_colors_returns_same_instance_on_repeated_calls(): void {
@@ -65,19 +67,35 @@ class DarkAdminTest extends WP_UnitTestCase {
     }
 
     // -------------------------------------------------------------------------
+    // darkadmin_normalize_preset_slug
+    // -------------------------------------------------------------------------
+
+    public function test_normalize_preset_slug_maps_legacy_default_to_classic(): void {
+        $this->assertSame( 'classic', darkadmin_normalize_preset_slug( 'default' ) );
+    }
+
+    public function test_normalize_preset_slug_unknown_falls_back_to_modern(): void {
+        $this->assertSame( 'modern', darkadmin_normalize_preset_slug( 'unknown-preset' ) );
+    }
+
+    // -------------------------------------------------------------------------
     // darkadmin_preset_css_file
     // -------------------------------------------------------------------------
 
-    public function test_preset_css_file_default(): void {
-        $this->assertSame( 'darkadmin-dark.css', darkadmin_preset_css_file( 'default' ) );
+    public function test_preset_css_file_classic(): void {
+        $this->assertSame( 'darkadmin-dark.css', darkadmin_preset_css_file( 'classic' ) );
     }
 
     public function test_preset_css_file_modern(): void {
         $this->assertSame( 'darkadmin-wp-modern.css', darkadmin_preset_css_file( 'modern' ) );
     }
 
-    public function test_preset_css_file_unknown_falls_back_to_default(): void {
-        $this->assertSame( 'darkadmin-dark.css', darkadmin_preset_css_file( 'unknown-preset' ) );
+    public function test_preset_css_file_legacy_default_uses_classic_css(): void {
+        $this->assertSame( 'darkadmin-dark.css', darkadmin_preset_css_file( 'default' ) );
+    }
+
+    public function test_preset_css_file_unknown_falls_back_to_modern_css(): void {
+        $this->assertSame( 'darkadmin-wp-modern.css', darkadmin_preset_css_file( 'unknown-preset' ) );
     }
 
     // -------------------------------------------------------------------------
@@ -91,7 +109,9 @@ class DarkAdminTest extends WP_UnitTestCase {
     public function test_css_variable_map_keys_match_default_colors(): void {
         $color_keys = array_keys( darkadmin_default_colors() );
         $map_keys   = array_keys( darkadmin_css_variable_map() );
-        $this->assertSame( sort( $color_keys ), sort( $map_keys ) );
+        sort( $color_keys );
+        sort( $map_keys );
+        $this->assertSame( $color_keys, $map_keys );
     }
 
     public function test_css_variable_map_entries_have_required_keys(): void {
@@ -122,19 +142,28 @@ class DarkAdminTest extends WP_UnitTestCase {
         $defaults        = darkadmin_default_colors();
         $input           = $defaults;
         $input['bg']     = 'not-a-color';
+        $input['_preset'] = 'classic';
         $result          = darkadmin_sanitize_colors( $input );
         $this->assertSame( $defaults['bg'], $result['bg'] );
     }
 
-    public function test_sanitize_colors_fills_missing_keys_with_defaults(): void {
+    public function test_sanitize_colors_fills_missing_keys_with_modern_defaults(): void {
         $result = darkadmin_sanitize_colors( [] );
-        $this->assertSame( darkadmin_default_colors(), $result );
+        $this->assertSame( darkadmin_preset_colors()['modern'], $result );
+    }
+
+    public function test_sanitize_colors_uses_preset_fallback_for_modern(): void {
+        $input            = [ '_preset' => 'modern', 'bg' => 'not-a-color' ];
+        $result           = darkadmin_sanitize_colors( $input );
+        $modern           = darkadmin_preset_colors()['modern'];
+        $this->assertSame( $modern['bg'], $result['bg'] );
     }
 
     public function test_sanitize_colors_rejects_xss_attempt(): void {
-        $input        = darkadmin_default_colors();
-        $input['bg']  = '<script>alert(1)</script>';
-        $result       = darkadmin_sanitize_colors( $input );
+        $input           = darkadmin_default_colors();
+        $input['bg']     = '<script>alert(1)</script>';
+        $input['_preset'] = 'classic';
+        $result          = darkadmin_sanitize_colors( $input );
         $this->assertSame( darkadmin_default_colors()['bg'], $result['bg'] );
     }
 
@@ -179,6 +208,14 @@ class DarkAdminTest extends WP_UnitTestCase {
 
     public function test_sanitize_custom_css_allows_empty_string(): void {
         $this->assertSame( '', darkadmin_sanitize_custom_css( '' ) );
+    }
+
+    // -------------------------------------------------------------------------
+    // darkadmin_sanitize_user_ids
+    // -------------------------------------------------------------------------
+
+    public function test_sanitize_user_ids_filters_empty_values(): void {
+        $this->assertSame( [ 1, 2 ], darkadmin_sanitize_user_ids( [ '1', '', '2', '0' ] ) );
     }
 
     // -------------------------------------------------------------------------
@@ -257,5 +294,9 @@ class DarkAdminTest extends WP_UnitTestCase {
 
     public function test_version_constant_is_semver(): void {
         $this->assertMatchesRegularExpression( '/^\d+\.\d+\.\d+$/', DARKADMIN_VERSION );
+    }
+
+    public function test_default_preset_constant_is_modern(): void {
+        $this->assertSame( 'modern', DARKADMIN_DEFAULT_PRESET );
     }
 }

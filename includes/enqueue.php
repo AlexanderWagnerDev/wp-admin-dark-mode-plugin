@@ -29,7 +29,7 @@ function darkadmin_sanitize_bool( $v ): bool {
  * @return int[]
  */
 function darkadmin_sanitize_user_ids( $v ): array {
-	return array_map( 'absint', (array) $v );
+	return array_values( array_filter( array_map( 'absint', (array) $v ) ) );
 }
 
 add_action(
@@ -59,7 +59,7 @@ add_action(
 			array(
 				'type'              => 'array',
 				'sanitize_callback' => 'darkadmin_sanitize_colors',
-				'default'           => darkadmin_default_colors(),
+				'default'           => darkadmin_preset_colors()['modern'],
 			)
 		);
 		register_setting(
@@ -104,7 +104,7 @@ add_action(
 			array(
 				'type'              => 'string',
 				'sanitize_callback' => 'darkadmin_sanitize_preset',
-				'default'           => 'default',
+				'default'           => DARKADMIN_DEFAULT_PRESET,
 			)
 		);
 		register_setting(
@@ -126,9 +126,7 @@ add_action(
  * @return string
  */
 function darkadmin_sanitize_preset( $v ): string {
-	$allowed = array_keys( darkadmin_preset_colors() );
-	$v       = sanitize_key( (string) $v );
-	return in_array( $v, $allowed, true ) ? $v : 'default';
+	return darkadmin_normalize_preset_slug( sanitize_key( (string) $v ) );
 }
 
 /**
@@ -228,7 +226,7 @@ add_action(
 			}
 		}
 
-		$preset   = get_option( 'darkadmin_preset', 'default' );
+		$preset   = darkadmin_normalize_preset_slug( (string) get_option( 'darkadmin_preset', DARKADMIN_DEFAULT_PRESET ) );
 		$css_file = darkadmin_preset_css_file( $preset );
 
 		// darkadmin_preset_fallbacks() and darkadmin_preset_layout_fallbacks() are
@@ -250,7 +248,7 @@ add_action(
 
 		$sc = static function ( string $k ) use ( $c, $fallbacks ) {
 			$val = sanitize_hex_color( isset( $c[ $k ] ) ? $c[ $k ] : '' );
-			return ( false !== $val && '' !== $val ) ? $val : $fallbacks[ $k ];
+			return ( is_string( $val ) && '' !== $val ) ? $val : $fallbacks[ $k ];
 		};
 		$sl = static function ( string $k ) use ( $l, $layout_fallbacks ) {
 			return sanitize_text_field( isset( $l[ $k ] ) ? $l[ $k ] : $layout_fallbacks[ $k ] );
@@ -367,7 +365,8 @@ add_action(
 			'darkadmin-settings-js',
 			'darkadminData',
 			array(
-				'defaults'       => darkadmin_default_colors(),
+				'defaults'       => darkadmin_preset_colors()['modern'],
+				'classicColors'  => darkadmin_default_colors(),
 				'varMap'         => array_map( fn( $v ) => $v['var'], darkadmin_css_variable_map() ),
 				'presets'        => darkadmin_preset_colors(),
 				'layoutDefaults' => darkadmin_default_layout(),

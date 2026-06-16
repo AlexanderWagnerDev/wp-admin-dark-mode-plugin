@@ -2,6 +2,35 @@
 ( function () {
 	'use strict';
 
+	const DEFAULT_PRESET = 'modern';
+
+	function getVarMap() {
+		return ( window.darkadminData && window.darkadminData.varMap ) || {};
+	}
+
+	function cssVarForKey( key ) {
+		const map = getVarMap();
+		return map[ key ] || ( '--adm-' + key.replace( /_/g, '-' ) );
+	}
+
+	function setCssVar( key, value ) {
+		document.documentElement.style.setProperty( cssVarForKey( key ), value );
+	}
+
+	function syncPresetHiddenFields( slug ) {
+		const presetInput = document.getElementById( 'darkadmin_preset' );
+		const colorsPreset = document.getElementById( 'darkadmin_colors_preset' );
+		const layoutPreset = document.getElementById( 'darkadmin_layout_preset' );
+		if ( presetInput ) presetInput.value = slug;
+		if ( colorsPreset ) colorsPreset.value = slug;
+		if ( layoutPreset ) layoutPreset.value = slug;
+	}
+
+	function activePresetSlug() {
+		const presetInput = document.getElementById( 'darkadmin_preset' );
+		return presetInput ? presetInput.value : DEFAULT_PRESET;
+	}
+
 	/* -----------------------------------------------------------------------
 	 * Color picker live preview
 	 * --------------------------------------------------------------------- */
@@ -12,14 +41,14 @@
 				change: function ( _e, ui ) {
 					const key = input.dataset.key;
 					if ( key ) {
-						document.documentElement.style.setProperty( '--adm-' + key.replace( /_/g, '-' ), ui.color.toString() );
+						setCssVar( key, ui.color.toString() );
 					}
 				},
 				clear: function () {
 					const key = input.dataset.key;
 					const def = input.dataset.defaultColor;
 					if ( key && def ) {
-						document.documentElement.style.setProperty( '--adm-' + key.replace( /_/g, '-' ), def );
+						setCssVar( key, def );
 					}
 				},
 			} );
@@ -34,7 +63,7 @@
 			input.addEventListener( 'input', function () {
 				const key = input.dataset.key;
 				if ( key ) {
-					document.documentElement.style.setProperty( '--adm-' + key.replace( /_/g, '-' ), input.value );
+					setCssVar( key, input.value );
 				}
 			} );
 		} );
@@ -78,7 +107,7 @@
 					? ( window.darkadminI18n ? window.darkadminI18n.active     : '✓ Active' )
 					: ( window.darkadminI18n ? window.darkadminI18n.loadPreset : 'Load Preset' );
 			} );
-			if ( presetInput ) presetInput.value = slug;
+			syncPresetHiddenFields( slug );
 		}
 
 		tiles.forEach( function ( tile ) {
@@ -86,7 +115,7 @@
 				updatePreview( tile.dataset.preset );
 			} );
 			tile.addEventListener( 'mouseleave', function () {
-				updatePreview( presetInput ? presetInput.value : 'default' );
+				updatePreview( presetInput ? presetInput.value : DEFAULT_PRESET );
 			} );
 		} );
 
@@ -116,7 +145,7 @@
 			if ( ! input ) return;
 			const val = colors[ key ];
 			jQuery( input ).wpColorPicker( 'color', val );
-			document.documentElement.style.setProperty( '--adm-' + key.replace( /_/g, '-' ), val );
+			setCssVar( key, val );
 		} );
 	}
 
@@ -129,49 +158,31 @@
 			if ( ! input ) return;
 			const val = layout[ key ];
 			input.value = val;
-			document.documentElement.style.setProperty( '--adm-' + key.replace( /_/g, '-' ), val );
-		} );
-	}
-
-	function updatePresetTiles( activeSlug ) {
-		document.querySelectorAll( '.adm-preset-tile' ).forEach( function ( tile ) {
-			tile.classList.toggle( 'adm-preset-active', tile.dataset.preset === activeSlug );
-		} );
-		document.querySelectorAll( '.adm-preset-load-btn' ).forEach( function ( btn ) {
-			const isActive = btn.dataset.preset === activeSlug;
-			btn.textContent = isActive
-				? ( window.darkadminI18n ? window.darkadminI18n.active     : '✓ Active' )
-				: ( window.darkadminI18n ? window.darkadminI18n.loadPreset : 'Load Preset' );
+			setCssVar( key, val );
 		} );
 	}
 
 	/* -----------------------------------------------------------------------
-	 * Reset colors
+	 * Reset colors / layout to active preset
 	 * --------------------------------------------------------------------- */
 	function initReset() {
 		const btnColors = document.getElementById( 'adm-reset-colors' );
 		if ( btnColors ) {
-			const darkadminDefaults = window.darkadminData.defaults;
+			const darkadminPresets = ( window.darkadminData && window.darkadminData.presets ) || {};
 			btnColors.addEventListener( 'click', function () {
-				Object.keys( darkadminDefaults ).forEach( function ( key ) {
-					const input = document.getElementById( 'adm_color_' + key );
-					if ( ! input ) return;
-					jQuery( input ).wpColorPicker( 'color', darkadminDefaults[ key ] );
-					document.documentElement.style.setProperty( '--adm-' + key.replace( /_/g, '-' ), darkadminDefaults[ key ] );
-				} );
+				const slug   = activePresetSlug();
+				const colors = darkadminPresets[ slug ] || darkadminPresets[ DEFAULT_PRESET ] || {};
+				loadPresetColors( colors );
 			} );
 		}
 
 		const btnLayout = document.getElementById( 'adm-reset-layout' );
 		if ( btnLayout ) {
-			const layoutDefaults = ( window.darkadminData && window.darkadminData.layoutDefaults ) || {};
+			const layoutPresets = ( window.darkadminData && window.darkadminData.layoutPresets ) || {};
 			btnLayout.addEventListener( 'click', function () {
-				Object.keys( layoutDefaults ).forEach( function ( key ) {
-					const input = document.getElementById( 'adm_layout_' + key );
-					if ( ! input ) return;
-					input.value = layoutDefaults[ key ];
-					document.documentElement.style.setProperty( '--adm-' + key.replace( /_/g, '-' ), layoutDefaults[ key ] );
-				} );
+				const slug   = activePresetSlug();
+				const layout = layoutPresets[ slug ] || layoutPresets[ DEFAULT_PRESET ] || {};
+				loadPresetLayout( layout );
 			} );
 		}
 	}
@@ -216,7 +227,7 @@
 							const input = document.getElementById( 'adm_color_' + key );
 							if ( ! input ) return;
 							jQuery( input ).wpColorPicker( 'color', data[ key ] );
-							document.documentElement.style.setProperty( '--adm-' + key.replace( /_/g, '-' ), data[ key ] );
+							setCssVar( key, data[ key ] );
 						} );
 						if ( statusEl ) {
 							statusEl.textContent = ( window.darkadminI18n && window.darkadminI18n.importOk ) ? window.darkadminI18n.importOk : '✓ Palette imported successfully.';
