@@ -2,9 +2,9 @@
 Contributors: alexanderwagnerdev
 Tags: dark mode, admin, dashboard, ui, accessibility
 Requires at least: 6.3
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 0.2.2
+Stable tag: 0.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,7 +21,7 @@ Funktionen:
 * Unterstützung für eigenes Custom CSS mit eingebauten CSS-Variablen
 * Token-basiertes Design-System für Hintergründe, Texte, Rahmen, Buttons und Statusfarben
 * Auto Dark Mode: Verdunkelt automatisch helle Plugin-Hintergründe, die vom Stylesheet nicht abgedeckt werden
-* Preset-Themes: Wechsel zwischen Default (WP 6.x) und Modern (WP 7.0) Farbpaletten
+* Preset-Themes: Modern (WP 7.0, Standard) und Classic (WP 6.x) Farbpaletten
 * Benutzerspezifische Dark-Mode-Zugriffskontrolle (Einschließen / Ausschließen) mit Empty-State-UI wenn keine Nicht-Admin-Benutzer vorhanden sind
 * Ausgeschlossene Seiten: Admin-Seiten angeben, auf denen Dark Mode nicht angewendet werden soll
 
@@ -50,6 +50,17 @@ Ein optionaler zweiter Schalter, der JavaScript verwendet, um helle Hintergründ
 4. Dashboard - Dark Mode aktiv
 
 == Changelog ==
+= 0.3.0 =
+* Modern-Preset ist jetzt Standard für Neuinstallationen (WP-7.0-Design)
+* „Default“-Preset in „Classic“ umbenannt (WP-6.x-Dark-Theme)
+* Bestehende Installationen behalten nach dem Update das Classic-Preset
+* Fix: Dark-Mode- und Auto-Dark-Mode-Toggles lassen sich zuverlässig deaktivieren
+* Fix: Erfolgsmeldung nach dem Speichern erscheint wieder
+* Fix: Live-Farbvorschau nutzt korrekte CSS-Variablennamen
+* Fix: Farb-/Layout-Sanitization respektiert das aktive Preset
+* Classic-Preset: Sidebar-Farbwähler wirken nun über `--adm-sidebar-*`-Tokens
+* Getestet bis WordPress 7.0
+
 = 0.2.2 =
 * Footer-Farbe im Plugin-Details-Dialog korrigiert
 

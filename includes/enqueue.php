@@ -366,7 +366,6 @@ add_action(
 			'darkadminData',
 			array(
 				'defaults'       => darkadmin_preset_colors()['modern'],
-				'classicColors'  => darkadmin_default_colors(),
 				'varMap'         => array_map( fn( $v ) => $v['var'], darkadmin_css_variable_map() ),
 				'presets'        => darkadmin_preset_colors(),
 				'layoutDefaults' => darkadmin_default_layout(),

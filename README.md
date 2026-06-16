@@ -61,6 +61,7 @@ A simple, lightweight Dark Mode plugin for the WordPress Admin Dashboard with fu
 - Settings saved notice now appears after saving
 - Live color preview uses correct CSS variable names
 - Color/layout sanitization respects the active preset
+- Classic preset: sidebar color pickers now apply via `--adm-sidebar-*` tokens
 
 ## [0.2.1] - 2026-03-28
 
@@ -250,6 +251,7 @@ Ein einfaches, schlankes Dark-Mode-Plugin für das WordPress Admin-Dashboard mit
 - Erfolgsmeldung nach dem Speichern erscheint wieder
 - Live-Farbvorschau nutzt korrekte CSS-Variablennamen
 - Farb-/Layout-Sanitization respektiert das aktive Preset
+- Classic-Preset: Sidebar-Farbwähler wirken nun über `--adm-sidebar-*`-Tokens
 
 ## 0.2.1
 

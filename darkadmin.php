@@ -48,7 +48,7 @@ add_action(
 		if ( 'default' === $preset ) {
 			update_option( 'darkadmin_preset', 'classic' );
 		} elseif ( false === $preset && darkadmin_is_existing_install() ) {
-			// Pre-1.0 installs without a saved preset were using the classic palette.
+			// Pre-0.3.0 installs without a saved preset were using the classic palette.
 			update_option( 'darkadmin_preset', 'classic' );
 		}
 

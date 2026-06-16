@@ -58,6 +58,7 @@ An optional second toggle that uses JavaScript to dynamically darken bright back
 * Fixed: Settings saved notice now appears after saving
 * Fixed: Live color preview uses correct CSS variable names
 * Fixed: Color/layout sanitization respects the active preset
+* Classic preset: sidebar color pickers now apply via `--adm-sidebar-*` tokens
 * Tested up to WordPress 7.0
 
 = 0.2.2 =

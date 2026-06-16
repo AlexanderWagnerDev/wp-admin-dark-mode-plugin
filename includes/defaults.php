@@ -144,7 +144,7 @@ function darkadmin_normalize_preset_slug( string $preset ): string {
 }
 
 /**
- * Whether the plugin was used before the 1.0.0 preset migration.
+ * Whether the plugin was used before the 0.3.0 preset migration.
  *
  * @return bool
  */

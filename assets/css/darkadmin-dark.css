@@ -75,10 +75,10 @@ body.wp-admin,
 #adminmenu,
 #adminmenuback,
 #adminmenuwrap {
-  background: var(--adm-bg) !important;
+  background: var(--adm-sidebar-bg) !important;
 }
 #adminmenu a {
-  color: var(--adm-text-muted) !important;
+  color: var(--adm-sidebar-text) !important;
 }
 #adminmenu .wp-has-current-submenu > a,
 #adminmenu .current > a,
@@ -92,7 +92,7 @@ body.wp-admin,
   background: var(--adm-bg-deep) !important;
 }
 #adminmenu .wp-submenu a {
-  color: var(--adm-text-muted) !important;
+  color: var(--adm-sidebar-text) !important;
 }
 #adminmenu .wp-submenu a:hover,
 #adminmenu .wp-submenu .current a {
@@ -100,7 +100,7 @@ body.wp-admin,
 }
 #adminmenu li.menu-top:hover,
 #adminmenu li.opensub > a.menu-top {
-  background: var(--adm-surface-1) !important;
+  background: var(--adm-sidebar-active) !important;
   color: var(--adm-text-on-primary) !important;
 }
 #adminmenu li.menu-top:hover > a > .wp-menu-image::before,
@@ -117,15 +117,15 @@ body.wp-admin,
 }
 #adminmenu .wp-menu-arrow,
 #adminmenu .wp-menu-arrow div {
-  background: var(--adm-surface-1) !important;
+  background: var(--adm-sidebar-active) !important;
 }
 #adminmenu li.menu-top.current,
 #adminmenu li.wp-has-current-submenu {
-  background: var(--adm-surface-1) !important;
+  background: var(--adm-sidebar-active) !important;
 }
 #adminmenu li.current > a.menu-top,
 #adminmenu li.wp-has-current-submenu > a.wp-has-current-submenu {
-  background: var(--adm-surface-1) !important;
+  background: var(--adm-sidebar-active) !important;
   color: var(--adm-text-on-primary) !important;
 }
 #adminmenu .wp-menu-separator {
@@ -148,11 +148,11 @@ body.wp-admin,
 #collapse-menu,
 #collapse-menu:hover,
 #collapse-button {
-  color: var(--adm-text-muted) !important;
+  color: var(--adm-sidebar-text) !important;
 }
 #collapse-button:hover {
   color: var(--adm-text) !important;
-  background: var(--adm-surface-1) !important;
+  background: var(--adm-sidebar-active) !important;
 }
 .wp-menu-badge::before,
 .wp-menu-badge {
