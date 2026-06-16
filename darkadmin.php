@@ -70,8 +70,35 @@ add_filter(
 );
 
 /**
+ * Transient key for the one-time "settings saved" admin notice.
+ *
+ * @param int $user_id User ID.
+ * @return string
+ */
+function darkadmin_settings_saved_notice_key( int $user_id ): string {
+	return 'darkadmin_settings_saved_' . $user_id;
+}
+
+/**
+ * Queue a success notice after DarkAdmin options are persisted.
+ *
+ * Nonce verification happens in options.php via settings_fields() before this runs.
+ *
+ * @param string $option Option name.
+ * @return void
+ */
+function darkadmin_queue_settings_saved_notice( string $option ): void {
+	if ( ! str_starts_with( $option, 'darkadmin_' ) || 'darkadmin_db_version' === $option ) {
+		return;
+	}
+	set_transient( darkadmin_settings_saved_notice_key( get_current_user_id() ), 1, MINUTE_IN_SECONDS );
+}
+
+add_action( 'updated_option', 'darkadmin_queue_settings_saved_notice' );
+add_action( 'added_option', 'darkadmin_queue_settings_saved_notice' );
+
+/**
  * Show an admin notice after settings are saved.
- * The WP Settings API redirects back with ?settings-updated=true after options.php.
  */
 add_action(
 	'admin_notices',
@@ -80,14 +107,16 @@ add_action(
 			return;
 		}
 
-		$page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
-		if ( 'darkadmin' !== $page ) {
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+		if ( ! $screen instanceof WP_Screen || 'settings_page_darkadmin' !== $screen->id ) {
 			return;
 		}
 
-		if ( empty( sanitize_key( wp_unslash( $_GET['settings-updated'] ?? '' ) ) ) ) {
+		$notice_key = darkadmin_settings_saved_notice_key( get_current_user_id() );
+		if ( ! get_transient( $notice_key ) ) {
 			return;
 		}
+		delete_transient( $notice_key );
 
 		$enabled = (bool) get_option( 'darkadmin_dark_mode_enabled', false );
 		$msg     = $enabled

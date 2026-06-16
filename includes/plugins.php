@@ -22,43 +22,43 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function darkadmin_plugin_registry(): array {
 	return array(
-		'yoast'       => array(
-			'label'         => 'Yoast SEO',
-			'description'   => __( 'SEO settings, metaboxes and dashboard widgets.', 'darkadmin-dark-mode-for-adminpanel' ),
-			'css'           => 'yoast.css',
-			'is_installed'  => static function (): bool {
+		'yoast'          => array(
+			'label'        => 'Yoast SEO',
+			'description'  => __( 'SEO settings, metaboxes and dashboard widgets.', 'darkadmin-dark-mode-for-adminpanel' ),
+			'css'          => 'yoast.css',
+			'is_installed' => static function (): bool {
 				return defined( 'WPSEO_VERSION' );
 			},
 		),
-		'wordfence'   => array(
-			'label'         => 'Wordfence',
-			'description'   => __( 'Firewall, scan and security options pages.', 'darkadmin-dark-mode-for-adminpanel' ),
-			'css'           => 'wordfence.css',
-			'is_installed'  => static function (): bool {
+		'wordfence'      => array(
+			'label'        => 'Wordfence',
+			'description'  => __( 'Firewall, scan and security options pages.', 'darkadmin-dark-mode-for-adminpanel' ),
+			'css'          => 'wordfence.css',
+			'is_installed' => static function (): bool {
 				return defined( 'WORDFENCE_VERSION' );
 			},
 		),
-		'updraftplus' => array(
-			'label'         => 'UpdraftPlus',
-			'description'   => __( 'Backup, restore and migration screens.', 'darkadmin-dark-mode-for-adminpanel' ),
-			'css'           => 'updraftplus.css',
-			'is_installed'  => static function (): bool {
+		'updraftplus'    => array(
+			'label'        => 'UpdraftPlus',
+			'description'  => __( 'Backup, restore and migration screens.', 'darkadmin-dark-mode-for-adminpanel' ),
+			'css'          => 'updraftplus.css',
+			'is_installed' => static function (): bool {
 				return defined( 'UPDRAFTPLUS_VERSION' ) || class_exists( 'UpdraftPlus', false );
 			},
 		),
-		'wp-optimize' => array(
-			'label'         => 'WP-Optimize',
-			'description'   => __( 'Database, cache and image optimization UI.', 'darkadmin-dark-mode-for-adminpanel' ),
-			'css'           => 'wp-optimize.css',
-			'is_installed'  => static function (): bool {
+		'wp-optimize'    => array(
+			'label'        => 'WP-Optimize',
+			'description'  => __( 'Database, cache and image optimization UI.', 'darkadmin-dark-mode-for-adminpanel' ),
+			'css'          => 'wp-optimize.css',
+			'is_installed' => static function (): bool {
 				return defined( 'WPO_VERSION' ) || class_exists( 'WP_Optimize', false );
 			},
 		),
 		'contact-form-7' => array(
-			'label'         => 'Contact Form 7',
-			'description'   => __( 'Form editor, tag generator, integration and list table.', 'darkadmin-dark-mode-for-adminpanel' ),
-			'css'           => 'contact-form-7.css',
-			'is_installed'  => static function (): bool {
+			'label'        => 'Contact Form 7',
+			'description'  => __( 'Form editor, tag generator, integration and list table.', 'darkadmin-dark-mode-for-adminpanel' ),
+			'css'          => 'contact-form-7.css',
+			'is_installed' => static function (): bool {
 				return defined( 'WPCF7_VERSION' );
 			},
 		),
