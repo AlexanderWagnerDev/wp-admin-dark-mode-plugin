@@ -4,6 +4,10 @@
 
 	const DEFAULT_PRESET = 'modern';
 
+	function i18n( key ) {
+		return ( window.darkadminI18n && window.darkadminI18n[ key ] ) ? window.darkadminI18n[ key ] : '';
+	}
+
 	function getVarMap() {
 		return ( window.darkadminData && window.darkadminData.varMap ) || {};
 	}
@@ -103,9 +107,7 @@
 			} );
 			loadBtns.forEach( function ( btn ) {
 				const isThis = btn.dataset.preset === slug;
-				btn.textContent = isThis
-					? ( window.darkadminI18n ? window.darkadminI18n.active     : '✓ Active' )
-					: ( window.darkadminI18n ? window.darkadminI18n.loadPreset : 'Load Preset' );
+				btn.textContent = isThis ? i18n( 'active' ) : i18n( 'loadPreset' );
 			} );
 			syncPresetHiddenFields( slug );
 		}
@@ -230,12 +232,12 @@
 							setCssVar( key, data[ key ] );
 						} );
 						if ( statusEl ) {
-							statusEl.textContent = ( window.darkadminI18n && window.darkadminI18n.importOk ) ? window.darkadminI18n.importOk : '✓ Palette imported successfully.';
+							statusEl.textContent = i18n( 'importOk' );
 							statusEl.className = 'adm-import-status adm-import-ok';
 						}
 					} catch ( err ) {
 						if ( statusEl ) {
-							statusEl.textContent = ( window.darkadminI18n && window.darkadminI18n.importErr ) ? window.darkadminI18n.importErr : '✕ Invalid JSON or color value.';
+							statusEl.textContent = i18n( 'importErr' );
 							statusEl.className = 'adm-import-status adm-import-err';
 						}
 					}
@@ -254,7 +256,7 @@
 			btn.addEventListener( 'click', function () {
 				navigator.clipboard.writeText( 'var(' + btn.dataset.var + ')' ).then( function () {
 					const orig  = btn.textContent;
-					const label = window.darkadminI18n ? window.darkadminI18n.copied : '✓ Copied!';
+					const label = i18n( 'copied' );
 					btn.textContent = label;
 					setTimeout( function () { btn.textContent = orig; }, 1400 );
 				} ).catch( function () {} );

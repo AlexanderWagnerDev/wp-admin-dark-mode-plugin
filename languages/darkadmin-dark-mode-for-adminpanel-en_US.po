@@ -212,6 +212,14 @@ msgstr "Click to copy"
 msgid "Copied!"
 msgstr "Copied!"
 
+#: includes/enqueue.php
+msgid "Palette imported successfully."
+msgstr "Palette imported successfully."
+
+#: includes/enqueue.php
+msgid "Invalid JSON or color value."
+msgstr "Invalid JSON or color value."
+
 #: includes/settings-page.php
 msgid "Custom CSS"
 msgstr "Custom CSS"
