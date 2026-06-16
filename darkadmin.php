@@ -30,6 +30,7 @@ define( 'DARKADMIN_DEFAULT_PRESET', 'modern' );
 
 require_once DARKADMIN_PATH . 'includes/defaults.php';
 require_once DARKADMIN_PATH . 'includes/user-settings.php';
+require_once DARKADMIN_PATH . 'includes/plugins.php';
 require_once DARKADMIN_PATH . 'includes/enqueue.php';
 require_once DARKADMIN_PATH . 'includes/settings-page.php';
 

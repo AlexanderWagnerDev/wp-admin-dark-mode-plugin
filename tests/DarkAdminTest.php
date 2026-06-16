@@ -14,6 +14,7 @@ class DarkAdminTest extends WP_UnitTestCase {
         delete_option( 'darkadmin_colors' );
         delete_option( 'darkadmin_preset' );
         delete_option( 'darkadmin_db_version' );
+        delete_option( 'darkadmin_plugins' );
     }
 
     // -------------------------------------------------------------------------
@@ -298,5 +299,22 @@ class DarkAdminTest extends WP_UnitTestCase {
 
     public function test_default_preset_constant_is_modern(): void {
         $this->assertSame( 'modern', DARKADMIN_DEFAULT_PRESET );
+    }
+
+    // -------------------------------------------------------------------------
+    // Plugin styles
+    // -------------------------------------------------------------------------
+
+    public function test_plugin_registry_has_five_entries(): void {
+        $this->assertCount( 5, darkadmin_plugin_registry() );
+    }
+
+    public function test_sanitize_plugins_filters_unknown_slugs(): void {
+        $result = darkadmin_sanitize_plugins( [ 'yoast', 'invalid', 'wordfence' ] );
+        $this->assertSame( [ 'yoast', 'wordfence' ], $result );
+    }
+
+    public function test_sanitize_plugins_returns_empty_for_empty_input(): void {
+        $this->assertSame( [], darkadmin_sanitize_plugins( [] ) );
     }
 }

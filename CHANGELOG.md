@@ -19,6 +19,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Live color preview uses correct CSS variable names (`surface1` → `--adm-surface-1`, etc.)
 - Color/layout sanitization respects the active preset
 - Classic preset: sidebar color pickers now apply via `--adm-sidebar-*` tokens in `darkadmin-dark.css`
+- Modern preset: added missing Thickbox modal and plugin-install-tab styles (parity with Classic)
 
 ## [0.2.2] - 2026-03-28
 

@@ -1,0 +1,261 @@
+/*
+ * DarkAdmin plugin styles: Contact Form 7
+ * Based on contact-form-7/trunk/admin/includes/css/styles.css
+ * and contact-form-7/trunk/includes/css/styles.css
+ */
+
+body.toplevel_page_wpcf7,
+body[class*="wpcf7_page_"],
+#wpcf7-contact-form-list-table,
+#wpcf7-contact-form-editor,
+#contact-form-editor,
+.wpcf7-welcome-panel {
+  color: var(--adm-text) !important;
+}
+
+#contact-form-editor .contact-form-editor-panel,
+#contact-form-editor-tabs button[aria-selected="true"] {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+#contact-form-editor-tabs {
+  border-bottom-color: var(--adm-border) !important;
+}
+
+#contact-form-editor-tabs button {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text-muted) !important;
+}
+
+#contact-form-editor-tabs button[aria-selected="true"] {
+  border-bottom-color: var(--adm-surface-1) !important;
+  color: var(--adm-text) !important;
+  font-weight: 600;
+}
+
+#contact-form-editor-tabs button:hover {
+  color: var(--adm-text) !important;
+}
+
+#contact-form-editor .contact-form-editor-panel h2,
+#contact-form-editor .contact-form-editor-panel legend,
+.wpcf7-welcome-panel h3 {
+  color: var(--adm-text) !important;
+}
+
+#contact-form-editor .form-table th,
+form.tag-generator-panel table.form-table th,
+.card .inside .form-table th {
+  color: var(--adm-text) !important;
+}
+
+div.config-error,
+span.config-error,
+ul.config-error,
+#misc-publishing-actions .config-error {
+  color: var(--adm-text-muted) !important;
+}
+
+[data-config-field][aria-invalid="true"] {
+  border-color: var(--adm-danger) !important;
+}
+
+.icon-in-circle,
+#contact-form-editor-tabs .icon-in-circle,
+#contact-form-editor .config-error .icon-in-circle,
+.wp-list-table .config-error .icon-in-circle {
+  background-color: var(--adm-warning) !important;
+  color: var(--adm-text-on-primary) !important;
+}
+
+span.shortcode {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+}
+
+span.shortcode.old {
+  background: var(--adm-surface-3) !important;
+  color: var(--adm-text) !important;
+}
+
+#wpcf7-contact-form-list-table span.shortcode input {
+  color: var(--adm-text) !important;
+}
+
+#wpcf7-contact-form-editor span.shortcode input {
+  color: var(--adm-text-on-primary) !important;
+}
+
+#submitpost input.delete {
+  color: var(--adm-danger) !important;
+  background: transparent !important;
+}
+
+#submitpost input.delete:hover {
+  color: color-mix(in srgb, var(--adm-danger) 80%, white) !important;
+}
+
+#tag-generator-list button {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+.tag-generator-dialog {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+  box-shadow: var(--adm-shadow-md) !important;
+}
+
+.tag-generator-dialog::backdrop {
+  background: color-mix(in srgb, var(--adm-bg) 50%, transparent) !important;
+}
+
+form.tag-generator-panel .description-box,
+form.tag-generator-panel[data-version="1"] .control-box > fieldset > legend {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+form.tag-generator-panel .insert-box,
+form.tag-generator-panel[data-version="1"] .insert-box {
+  background: var(--adm-surface-2) !important;
+  border-top-color: var(--adm-border) !important;
+}
+
+form.tag-generator-panel .control-box input:invalid,
+form.tag-generator-panel .control-box textarea:invalid {
+  background-color: color-mix(in srgb, var(--adm-danger) 15%, var(--adm-surface-2)) !important;
+}
+
+form.tag-generator-panel .control-box input[type="text"],
+form.tag-generator-panel .control-box input[type="number"],
+form.tag-generator-panel .control-box textarea,
+form.tag-generator-panel .control-box select,
+form.tag-generator-panel .control-box input.oneline,
+form.tag-generator-panel .control-box input.large-text,
+form.tag-generator-panel .control-box textarea.values {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+form.tag-generator-panel[data-version="1"] .control-box table caption {
+  color: var(--adm-text-muted) !important;
+}
+
+.contact-form-editor-box-mail span.mailtag {
+  color: var(--adm-text) !important;
+}
+
+.contact-form-editor-box-mail span.mailtag.used {
+  color: var(--adm-text-muted) !important;
+}
+
+.contact-form-editor-box-mail span.mailtag.unused {
+  color: var(--adm-text) !important;
+}
+
+#messages-panel p.description {
+  color: var(--adm-text-muted) !important;
+}
+
+.wpcf7-welcome-panel {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-border) !important;
+  box-shadow: none !important;
+}
+
+.wpcf7-welcome-panel p,
+.wpcf7-welcome-panel .welcome-panel-column p {
+  color: var(--adm-text-muted) !important;
+}
+
+.wpcf7-welcome-panel h3 .dashicons {
+  color: var(--adm-text-soft) !important;
+}
+
+.wpcf7-welcome-panel .welcome-panel-close,
+.wpcf7-welcome-panel .welcome-panel-close::before {
+  color: var(--adm-text-muted) !important;
+}
+
+.wpcf7-welcome-panel p a {
+  color: var(--adm-link) !important;
+}
+
+.card {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-border) !important;
+  box-shadow: none !important;
+  color: var(--adm-text) !important;
+}
+
+.card.active {
+  border-left-color: var(--adm-primary) !important;
+}
+
+#constant_contact.card.active {
+  border-left-color: var(--adm-danger) !important;
+}
+
+.card h2.title {
+  color: var(--adm-text) !important;
+}
+
+.card .infobox {
+  color: var(--adm-text-muted) !important;
+}
+
+#sendinblue-panel td p {
+  color: var(--adm-text-muted) !important;
+}
+
+/* Frontend form classes used in admin previews */
+.wpcf7 form .wpcf7-response-output {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-primary) !important;
+  color: var(--adm-text) !important;
+}
+
+.wpcf7 form.sent .wpcf7-response-output {
+  border-color: var(--adm-success) !important;
+}
+
+.wpcf7 form.failed .wpcf7-response-output,
+.wpcf7 form.aborted .wpcf7-response-output {
+  border-color: var(--adm-danger) !important;
+}
+
+.wpcf7 form.spam .wpcf7-response-output {
+  border-color: var(--adm-warning) !important;
+}
+
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.unaccepted .wpcf7-response-output,
+.wpcf7 form.payment-required .wpcf7-response-output {
+  border-color: var(--adm-warning) !important;
+}
+
+.wpcf7-not-valid-tip,
+.use-floating-validation-tip .wpcf7-not-valid-tip {
+  color: var(--adm-danger) !important;
+}
+
+.use-floating-validation-tip .wpcf7-not-valid-tip {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-danger) !important;
+}
+
+.wpcf7-spinner {
+  background-color: var(--adm-surface-3) !important;
+}
+
+.wpcf7-spinner::before {
+  background-color: var(--adm-text) !important;
+}

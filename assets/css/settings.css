@@ -291,6 +291,75 @@
 }
 
 /* =============================================================================
+   PLUGIN STYLES GRID
+   ============================================================================= */
+.adm-plugin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.adm-plugin-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid #dcdcde;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+  user-select: none;
+}
+.adm-plugin-item:hover:not(.is-unavailable) {
+  border-color: #2271b1;
+  background: #f0f6fc;
+}
+.adm-plugin-item.is-unavailable {
+  opacity: .65;
+  cursor: default;
+}
+.adm-plugin-item input[type="checkbox"] {
+  flex-shrink: 0;
+  margin: 2px 0 0;
+  accent-color: #2271b1;
+  width: 15px;
+  height: 15px;
+}
+.adm-plugin-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+.adm-plugin-info strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1d2327;
+}
+.adm-plugin-info span {
+  font-size: 12px;
+  color: #646970;
+  line-height: 1.4;
+}
+.adm-plugin-status {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  line-height: 1.5;
+}
+.adm-plugin-status.is-installed {
+  background: #edfaef;
+  color: #1e7e34;
+}
+.adm-plugin-status.is-missing {
+  background: #f0f0f1;
+  color: #646970;
+}
+
+/* =============================================================================
    USER ACCESS GRID
    ============================================================================= */
 .adm-user-grid {
@@ -984,6 +1053,25 @@ body.adm-dark-active .adm-access-mode-option.is-active .dashicons,
 body.adm-dark-active .adm-access-mode-option:hover .dashicons { color: var(--adm-link) !important; }
 body.adm-dark-active .adm-access-mode-label strong           { color: var(--adm-text) !important; }
 body.adm-dark-active .adm-access-mode-label span             { color: var(--adm-text-muted) !important; }
+
+body.adm-dark-active .adm-plugin-item {
+  border-color: var(--adm-border) !important;
+  background: var(--adm-surface-1) !important;
+}
+body.adm-dark-active .adm-plugin-item:hover:not(.is-unavailable) {
+  border-color: var(--adm-border-focus) !important;
+  background: var(--adm-surface-2) !important;
+}
+body.adm-dark-active .adm-plugin-info strong { color: var(--adm-text) !important; }
+body.adm-dark-active .adm-plugin-info span   { color: var(--adm-text-muted) !important; }
+body.adm-dark-active .adm-plugin-status.is-installed {
+  background: color-mix(in srgb, var(--adm-success) 20%, transparent) !important;
+  color: var(--adm-success) !important;
+}
+body.adm-dark-active .adm-plugin-status.is-missing {
+  background: var(--adm-surface-2) !important;
+  color: var(--adm-text-muted) !important;
+}
 
 body.adm-dark-active .adm-user-empty-state {
   background: var(--adm-bg) !important;

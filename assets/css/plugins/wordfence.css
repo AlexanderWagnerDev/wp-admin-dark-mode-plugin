@@ -1,0 +1,201 @@
+/*
+ * DarkAdmin plugin styles: Wordfence Security
+ * Based on wordfence/trunk/css (main, wf-global).
+ */
+
+body.toplevel_page_Wordfence,
+body[class*="wordfence_page_"],
+#wordfence.wrap,
+.wf-wrap,
+.wf-container,
+.wf-body,
+.wf-options,
+#wf-config {
+  background: var(--adm-bg) !important;
+  color: var(--adm-text) !important;
+}
+
+.wf-block,
+.wf-block-content,
+.wf-card,
+.wf-panel,
+.wf-options-group,
+.wf-modal-content,
+.wf-audit-log-preview,
+.wf-audit-log-preview-wrapper {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+  box-shadow: none !important;
+}
+
+.wf-block-header,
+.wf-block-header-content,
+.wf-block-title,
+.wf-heading,
+.wf-block-labeled-value-label,
+.wf-wrap h1,
+.wf-wrap h2,
+.wf-wrap h3,
+#wordfence h1,
+#wordfence h2 {
+  color: var(--adm-text) !important;
+  background: transparent !important;
+}
+
+.wf-block-header,
+.wf-block-header-left,
+.wf-block-header-action {
+  border-color: var(--adm-border) !important;
+}
+
+.wf-block-labeled-value-value,
+.wf-block-header-action-text {
+  color: var(--adm-text) !important;
+}
+
+.wf-wrap p,
+.wf-block-content p,
+.wf-muted,
+.wf-subtitle,
+.wf-block-header-action-text-warning {
+  color: var(--adm-text-muted) !important;
+}
+
+.wf-wrap a,
+.wf-block-content a,
+.wf-alert-link,
+.wf-back-link {
+  color: var(--adm-link) !important;
+}
+
+.wf-wrap a:hover,
+.wf-back-link:hover {
+  color: var(--adm-link-hover) !important;
+}
+
+.wf-wrap input[type="text"],
+.wf-wrap input[type="number"],
+.wf-wrap input[type="password"],
+.wf-wrap input[type="email"],
+.wf-wrap input[type="search"],
+.wf-wrap select,
+.wf-wrap textarea,
+.wf-form-control,
+.wf-all-options-search input {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+.wf-wrap input:focus,
+.wf-wrap select:focus,
+.wf-wrap textarea:focus {
+  border-color: var(--adm-border-focus) !important;
+  box-shadow: 0 0 0 1px var(--adm-border-focus) !important;
+}
+
+.wf-btn,
+.wf-wrap .button,
+.wf-wrap .button-secondary {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+.wf-btn-primary,
+.wf-wrap .button-primary,
+.wf-btn.wf-btn-primary {
+  background: var(--adm-primary) !important;
+  border-color: var(--adm-primary) !important;
+  color: var(--adm-text-on-primary) !important;
+}
+
+.wf-wrap table.widefat,
+.wf-wrap table.wp-list-table,
+.wf-audit-log-events table {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-border) !important;
+}
+
+.wf-wrap table.widefat th,
+.wf-wrap table.widefat td,
+.wf-wrap table.wp-list-table th,
+.wf-wrap table.wp-list-table td {
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+.wf-wrap .alternate,
+.wf-wrap tr.alternate td {
+  background: var(--adm-table-alt) !important;
+}
+
+.wf-admin-notice,
+.wf-notice,
+.wf-wrap .notice,
+.wf-alert,
+.wf-alert-info,
+.wf-alert-success,
+.wf-alert-warning,
+.wf-alert-danger,
+#wf-extended-protection-notice {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+.wf-badge,
+.wf-blocking-status,
+.wf-blocking-status-premium {
+  background: var(--adm-surface-2) !important;
+  color: var(--adm-text) !important;
+  border-color: var(--adm-border) !important;
+}
+
+.wf-tabs a,
+.wf-tab,
+.wf-navbar a {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text-muted) !important;
+}
+
+.wf-tabs a.wf-active,
+.wf-tab.wf-active,
+.wf-navbar a.wf-active {
+  background: var(--adm-surface-1) !important;
+  color: var(--adm-text) !important;
+  border-bottom-color: var(--adm-primary) !important;
+}
+
+.wf-scan-results,
+.wf-log-viewer,
+.wf-code-block,
+.wf-pre,
+.wf-audit-log-preview,
+#wfcolorbox,
+#wf-colorbox.wf-modal .wf-modal-content {
+  background: var(--adm-bg-darker) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+.wf-modal-footer,
+.wf-modal-header {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+div.wf-radio-group div.wf-radio-option label,
+.wf-password-requirements {
+  color: var(--adm-text) !important;
+}
+
+.wf-blocked-countries-section,
+.wf-block-add-country,
+.wf-block-banner {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-border) !important;
+}

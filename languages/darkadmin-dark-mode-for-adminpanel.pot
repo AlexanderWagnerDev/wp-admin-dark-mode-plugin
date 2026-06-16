@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DarkAdmin - Dark Mode for Adminpanel\n"
 "Report-Msgid-Bugs-To: https://alexanderwagnerdev.com\n"
-"POT-Creation-Date: 2026-04-04 22:40+0200\n"
-"PO-Revision-Date: 2026-04-04 22:40+0200\n"
+"POT-Creation-Date: 2026-06-16 12:00+0200\n"
+"PO-Revision-Date: 2026-06-16 12:00+0200\n"
 "Last-Translator: AlexanderWagnerDev <info@alexanderwagnerdev.com>\n"
 "Language-Team: AlexanderWagnerDev <info@alexanderwagnerdev.com>\n"
 "Language: \n"
@@ -64,19 +64,19 @@ msgid "Choose a preset to load its color palette. You can further customize colo
 msgstr ""
 
 #: includes/settings-page.php
-msgid "Default"
-msgstr ""
-
-#: includes/settings-page.php
-msgid "Classic WP 6.x dark theme"
-msgstr ""
-
-#: includes/settings-page.php
 msgid "Modern"
 msgstr ""
 
 #: includes/settings-page.php
-msgid "WP Modern design language (dark)"
+msgid "WP 7.0 design language — default"
+msgstr ""
+
+#: includes/settings-page.php
+msgid "Classic"
+msgstr ""
+
+#: includes/settings-page.php
+msgid "WP 6.x dark theme"
 msgstr ""
 
 #: includes/settings-page.php
@@ -128,6 +128,46 @@ msgid "No non-administrator users found. Create additional users to manage their
 msgstr ""
 
 #: includes/settings-page.php
+msgid "Plugins"
+msgstr ""
+
+#: includes/settings-page.php
+msgid "Enable dedicated dark styles for popular plugins. Only installed plugins can be activated."
+msgstr ""
+
+#: includes/settings-page.php
+msgid "Installed"
+msgstr ""
+
+#: includes/settings-page.php
+msgid "Not installed"
+msgstr ""
+
+#: includes/settings-page.php
+msgid "Plugin styles load after the main dark theme and use your color variables."
+msgstr ""
+
+#: includes/plugins.php
+msgid "SEO settings, metaboxes and dashboard widgets."
+msgstr ""
+
+#: includes/plugins.php
+msgid "Firewall, scan and security options pages."
+msgstr ""
+
+#: includes/plugins.php
+msgid "Backup, restore and migration screens."
+msgstr ""
+
+#: includes/plugins.php
+msgid "Database, cache and image optimization UI."
+msgstr ""
+
+#: includes/plugins.php
+msgid "Form editor, tag generator, integration and list table."
+msgstr ""
+
+#: includes/settings-page.php
 msgid "Layout & Spacing"
 msgstr ""
 
@@ -136,7 +176,7 @@ msgid "Adjust spacing, button sizes, border radii and shadow. px values only for
 msgstr ""
 
 #: includes/settings-page.php
-msgid "Restore Default Layout"
+msgid "Restore Preset Layout"
 msgstr ""
 
 #: includes/settings-page.php
@@ -156,7 +196,7 @@ msgid "Import Palette"
 msgstr ""
 
 #: includes/settings-page.php
-msgid "Restore Default Colors"
+msgid "Restore Preset Colors"
 msgstr ""
 
 #: includes/settings-page.php

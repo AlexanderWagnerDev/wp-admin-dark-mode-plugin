@@ -116,6 +116,15 @@ add_action(
 				'default'           => '',
 			)
 		);
+		register_setting(
+			'darkadmin_settings',
+			'darkadmin_plugins',
+			array(
+				'type'              => 'array',
+				'sanitize_callback' => 'darkadmin_sanitize_plugins',
+				'default'           => array(),
+			)
+		);
 	}
 );
 
@@ -333,6 +342,8 @@ add_action(
 				)
 			);
 		}
+
+		darkadmin_enqueue_plugin_styles();
 	}
 );
 

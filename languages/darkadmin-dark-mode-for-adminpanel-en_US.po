@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DarkAdmin - Dark Mode for Adminpanel\n"
 "Report-Msgid-Bugs-To: https://alexanderwagnerdev.com\n"
-"POT-Creation-Date: 2026-04-04 22:40+0200\n"
-"PO-Revision-Date: 2026-04-04 22:40+0200\n"
+"POT-Creation-Date: 2026-06-16 12:00+0200\n"
+"PO-Revision-Date: 2026-06-16 12:00+0200\n"
 "Last-Translator: AlexanderWagnerDev <info@alexanderwagnerdev.com>\n"
 "Language-Team: AlexanderWagnerDev <info@alexanderwagnerdev.com>\n"
 "Language: en_US\n"
@@ -65,20 +65,20 @@ msgid "Choose a preset to load its color palette. You can further customize colo
 msgstr "Choose a preset to load its color palette. You can further customize colors below after loading."
 
 #: includes/settings-page.php
-msgid "Default"
-msgstr "Default"
-
-#: includes/settings-page.php
-msgid "Classic WP 6.x dark theme"
-msgstr "Classic WP 6.x dark theme"
-
-#: includes/settings-page.php
 msgid "Modern"
 msgstr "Modern"
 
 #: includes/settings-page.php
-msgid "WP Modern design language (dark)"
-msgstr "WP Modern design language (dark)"
+msgid "WP 7.0 design language — default"
+msgstr "WP 7.0 design language — default"
+
+#: includes/settings-page.php
+msgid "Classic"
+msgstr "Classic"
+
+#: includes/settings-page.php
+msgid "WP 6.x dark theme"
+msgstr "WP 6.x dark theme"
 
 #: includes/settings-page.php
 msgid "✓ Active"
@@ -129,6 +129,46 @@ msgid "No non-administrator users found. Create additional users to manage their
 msgstr "No non-administrator users found. Create additional users to manage their dark mode access here."
 
 #: includes/settings-page.php
+msgid "Plugins"
+msgstr "Plugins"
+
+#: includes/settings-page.php
+msgid "Enable dedicated dark styles for popular plugins. Only installed plugins can be activated."
+msgstr "Enable dedicated dark styles for popular plugins. Only installed plugins can be activated."
+
+#: includes/settings-page.php
+msgid "Installed"
+msgstr "Installed"
+
+#: includes/settings-page.php
+msgid "Not installed"
+msgstr "Not installed"
+
+#: includes/settings-page.php
+msgid "Plugin styles load after the main dark theme and use your color variables."
+msgstr "Plugin styles load after the main dark theme and use your color variables."
+
+#: includes/plugins.php
+msgid "SEO settings, metaboxes and dashboard widgets."
+msgstr "SEO settings, metaboxes and dashboard widgets."
+
+#: includes/plugins.php
+msgid "Firewall, scan and security options pages."
+msgstr "Firewall, scan and security options pages."
+
+#: includes/plugins.php
+msgid "Backup, restore and migration screens."
+msgstr "Backup, restore and migration screens."
+
+#: includes/plugins.php
+msgid "Database, cache and image optimization UI."
+msgstr "Database, cache and image optimization UI."
+
+#: includes/plugins.php
+msgid "Form editor, tag generator, integration and list table."
+msgstr "Form editor, tag generator, integration and list table."
+
+#: includes/settings-page.php
 msgid "Layout & Spacing"
 msgstr "Layout & Spacing"
 
@@ -137,8 +177,8 @@ msgid "Adjust spacing, button sizes, border radii and shadow. px values only for
 msgstr "Adjust spacing, button sizes, border radii and shadow. px values only for size fields; shadow accepts any valid CSS box-shadow value."
 
 #: includes/settings-page.php
-msgid "Restore Default Layout"
-msgstr "Restore Default Layout"
+msgid "Restore Preset Layout"
+msgstr "Restore Preset Layout"
 
 #: includes/settings-page.php
 msgid "Color Customization"
@@ -157,8 +197,8 @@ msgid "Import Palette"
 msgstr "Import Palette"
 
 #: includes/settings-page.php
-msgid "Restore Default Colors"
-msgstr "Restore Default Colors"
+msgid "Restore Preset Colors"
+msgstr "Restore Preset Colors"
 
 #: includes/settings-page.php
 msgid "Available CSS Variables"

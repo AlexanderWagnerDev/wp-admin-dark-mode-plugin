@@ -1,0 +1,237 @@
+/*
+ * DarkAdmin plugin styles: WP-Optimize
+ * Based on wp-optimize/trunk/css/wp-optimize-admin.css and wp-optimize-global.css
+ */
+
+body.toplevel_page_WP-Optimize,
+body[class*="wp-optimize_page_"],
+#wp-optimize-wrap,
+.wpo-main,
+.wpo-wrap {
+  background: var(--adm-bg) !important;
+  color: var(--adm-text) !important;
+}
+
+.wpo-main-header,
+.wpo-main-header p.wpo-header-links,
+.wpo-main-header p.wpo-header-links__mobile {
+  background: var(--adm-bg-bar) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+  box-shadow: none !important;
+}
+
+.wpo-main-header .wpo-subheader,
+.wpo-main-header p.wpo-header-links .wpo-header-links__label,
+.wpo-main-header p.wpo-header-links__mobile .wpo-header-links__label {
+  color: var(--adm-text-muted) !important;
+}
+
+.wpo-main-header p.wpo-header-links a,
+.wpo-main-header p.wpo-header-links__mobile a {
+  color: var(--adm-link) !important;
+}
+
+body.is-scrolled .wpo-main-header {
+  box-shadow: var(--adm-shadow-md) !important;
+}
+
+#wp-optimize-wrap .postbox,
+.postbox.wpo-tab-postbox,
+.wpo-p25,
+.wpo-fieldgroup,
+.wpo-collapsible-content {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+  box-shadow: none !important;
+}
+
+#wp-optimize-wrap h1,
+#wp-optimize-wrap h2,
+#wp-optimize-wrap h3,
+.wpo-tab-postbox > h3:first-child,
+#wpo-server-info h2 {
+  color: var(--adm-text) !important;
+}
+
+#wp-optimize-wrap p,
+.wp-optimize-settings td > label,
+.wpo-description,
+.wpo-help-text,
+p.wpo-take-a-backup {
+  color: var(--adm-text-muted) !important;
+}
+
+#wp-optimize-wrap a,
+#wp-optimize-nav-tab-contents-tables a,
+#wpo_unused_images a {
+  color: var(--adm-link) !important;
+}
+
+#wp-optimize-wrap a:hover {
+  color: var(--adm-link-hover) !important;
+}
+
+#wp-optimize-wrap input[type="text"],
+#wp-optimize-wrap input[type="number"],
+#wp-optimize-wrap input[type="password"],
+#wp-optimize-wrap input[type="email"],
+#wp-optimize-wrap input[type="search"],
+#wp-optimize-wrap select,
+#wp-optimize-wrap textarea,
+.wp-optimize-settings input,
+.wp-optimize-settings select {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+#wp-optimize-wrap input:focus,
+#wp-optimize-wrap select:focus,
+#wp-optimize-wrap textarea:focus {
+  border-color: var(--adm-border-focus) !important;
+  box-shadow: 0 0 0 1px var(--adm-border-focus) !important;
+}
+
+#wp-optimize-wrap .button,
+#wp-optimize-wrap .button-secondary,
+.wpo-button-wrap .button {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+#wp-optimize-wrap .button-primary {
+  background: var(--adm-primary) !important;
+  border-color: var(--adm-primary) !important;
+  color: var(--adm-text-on-primary) !important;
+}
+
+#wp-optimize-wrap table.widefat,
+#wpoptimize_table_list,
+#wp-optimize-database-table-analysis table,
+.wpo-collapsible-content .smush-details table {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-border) !important;
+}
+
+#wp-optimize-wrap .widefat th,
+#wp-optimize-wrap .widefat td,
+#wpoptimize_table_list th,
+#wpoptimize_table_list td,
+th.wpo-thin-header,
+th.wpo-thin-header-2 {
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+#wpoptimize_table_list tr:nth-child(even) td {
+  background: var(--adm-table-alt) !important;
+}
+
+#wp-optimize-wrap .nav-tab,
+.wpo-nav-tab {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text-muted) !important;
+}
+
+#wp-optimize-wrap .nav-tab.nav-tab-active,
+.wpo-nav-tab.nav-tab-active {
+  background: var(--adm-surface-1) !important;
+  color: var(--adm-text) !important;
+  border-bottom-color: var(--adm-surface-1) !important;
+}
+
+#wp-optimize-wrap .nav-tab-wrapper {
+  border-color: var(--adm-border) !important;
+}
+
+*[class*="wpo-badge"],
+.wpo-badge__new {
+  background: var(--adm-surface-2) !important;
+  color: var(--adm-text) !important;
+  border-color: var(--adm-border) !important;
+}
+
+#wp-optimize-wrap .switch .slider {
+  background-color: var(--adm-surface-3) !important;
+  border-color: var(--adm-border) !important;
+}
+
+#wp-optimize-wrap .switch .slider::before {
+  background-color: var(--adm-text-muted) !important;
+  border-color: var(--adm-border) !important;
+}
+
+#wp-optimize-wrap .switch input:checked + .slider {
+  background: var(--adm-primary) !important;
+  border-color: var(--adm-primary) !important;
+}
+
+#wp-optimize-wrap .switch input:checked + .slider::before {
+  background: var(--adm-text-on-primary) !important;
+  border-color: var(--adm-text-on-primary) !important;
+}
+
+#wp-optimize-wrap .notice,
+.notice.wpo-error__enabling-cache,
+.notice.wpo-warnings__enabling-cache,
+#wpo_import_error_message,
+#wpo_import_success_message,
+#wp-optimize-logging-options {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+.wpo-error,
+#wpo_import_error_message,
+#wpo_gzip_compression_error_message {
+  color: var(--adm-danger) !important;
+}
+
+.save-done,
+#wpo_import_success_message,
+#wp-optimize-wrap .optimization_done_icon {
+  color: var(--adm-success) !important;
+}
+
+#wpo_browser_cache_output,
+#wpo_gzip_compression_output,
+#wpo_advanced_cache_output,
+#wpo-status-report-container pre,
+#wpo-server-info-report,
+.wpo-settings-debug {
+  background: var(--adm-bg-darker) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+#wp-optimize-nav-tab-wpo_database-tables-contents .wpo-take-a-backup,
+.wpo-confirm,
+#wpo_404_detector_results,
+.wpo-404-requests {
+  background: var(--adm-surface-2) !important;
+  color: var(--adm-text) !important;
+}
+
+hr.wpo-thin-bar {
+  border-color: var(--adm-border) !important;
+  background: var(--adm-border) !important;
+}
+
+.wpo-action-separator {
+  color: var(--adm-text-soft) !important;
+}
+
+.wpo-collapsible {
+  color: var(--adm-link) !important;
+}
+
+#wpoptimize_table_list tr td.loading,
+#wpoptimize_table_list tr td.no-table {
+  background: var(--adm-surface-2) !important;
+  color: var(--adm-text-muted) !important;
+}

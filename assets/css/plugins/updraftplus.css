@@ -1,0 +1,224 @@
+/*
+ * DarkAdmin plugin styles: UpdraftPlus
+ * Based on updraftplus/trunk/css/updraftplus-admin.css
+ */
+
+.settings_page_updraftplus #wpcontent,
+#updraft-wrap,
+.updraft_maincontainer,
+.updraft-central-container,
+.updraft_migrate_widget,
+.updraft-ad-container,
+#updraft_migrate_tab_main {
+  background: var(--adm-bg) !important;
+  color: var(--adm-text) !important;
+}
+
+#updraft-wrap .postbox,
+.updraft_maincontainer .postbox,
+.updraft-ad-container .postbox,
+#updraft-navtab-migrate-content .postbox,
+.udp-box,
+.updraft_migrate_widget_module_content,
+.updraft_simple_migrate_widget_module_content {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+  box-shadow: none !important;
+}
+
+#updraft-wrap .postbox .hndle,
+#updraft-wrap h2,
+#updraft-wrap h3,
+.updraft_maincontainer h2,
+.updraft_maincontainer h3,
+.udp-box h3,
+.udp-box__heading,
+.updraft_migrate_widget_module_content header h3,
+.updraft_settings_sectionheading {
+  color: var(--adm-text) !important;
+  background: transparent !important;
+}
+
+#updraft-wrap p,
+.updraft_maincontainer p,
+.updraft-ad-container p,
+.updraft-field-description,
+table.form-table td p.updraft-field-description,
+p.updraftplus-option,
+span.updraftplus-option-label {
+  color: var(--adm-text-muted) !important;
+}
+
+#updraft-wrap a,
+.updraft_maincontainer a,
+#updraft-wrap a .dashicons {
+  color: var(--adm-link) !important;
+}
+
+#updraft-wrap a:hover {
+  color: var(--adm-link-hover) !important;
+}
+
+#updraft-wrap input[type="text"],
+#updraft-wrap input[type="number"],
+#updraft-wrap input[type="password"],
+#updraft-wrap input[type="email"],
+#updraft-wrap select,
+#updraft-wrap textarea,
+.settings_page_updraftplus input[type="text"],
+.settings_page_updraftplus select,
+input.updraft_input--wide,
+textarea.updraft_input--wide,
+input.updraft_exclude_entity_field {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+#updraft-wrap input:focus,
+#updraft-wrap select:focus,
+#updraft-wrap textarea:focus {
+  border-color: var(--adm-border-focus) !important;
+  box-shadow: 0 0 0 1px var(--adm-border-focus) !important;
+}
+
+#updraft-wrap .button,
+#updraft-wrap .button-secondary,
+.updraft_maincontainer .button,
+.udp-button {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+#updraft-wrap .button-primary,
+.updraft_maincontainer .button-primary,
+.updraftplus-top-button,
+.udp-button-primary,
+.button-ud-google {
+  background: var(--adm-primary) !important;
+  border-color: var(--adm-primary) !important;
+  color: var(--adm-text-on-primary) !important;
+}
+
+.button-ud-google:hover,
+.udp-button-primary:hover {
+  background: var(--adm-primary-hover) !important;
+  border-color: var(--adm-primary-hover) !important;
+}
+
+.updraft_existing_backups,
+#updraft-navtab-backups-content .updraft_existing_backups,
+.updraft_backuplist,
+.updraft_restore_container,
+.updraft_migrate_widget table,
+#updraft_activejobs_table,
+.clone-list table {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+.updraft_existing_backups th,
+.updraft_existing_backups td,
+.updraft_backuplist th,
+.updraft_backuplist td,
+.clone-list table th,
+.clone-list table td {
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+.updraft_existing_backups_row,
+.updraft_backuplist tr:nth-child(even),
+.clone-list table tr:nth-child(odd) td,
+.updraft_row {
+  background: var(--adm-table-alt) !important;
+}
+
+#updraft-navtab-backups-content .updraft_existing_backups .updraft_existing_backups_row.backuprowselected,
+#updraft-navtab-backups-content .updraft_existing_backups .updraft_existing_backups_row.backuprowselected td {
+  background: color-mix(in srgb, var(--adm-primary) 20%, var(--adm-surface-1)) !important;
+}
+
+.updraft-color--very-light-grey,
+.updraftclone-tokens,
+.updraftclone_action_box,
+.opened .updraft_migrate_widget_temporary_clone_stage0,
+.opened .updraft_migrate_widget_migration_stage0,
+section.premium-upgrade-purchase-success,
+.clone-list table tr td {
+  background: var(--adm-surface-2) !important;
+  color: var(--adm-text) !important;
+}
+
+.clone-list table tr th {
+  background: var(--adm-surface-3) !important;
+}
+
+.updraft_logcontainer,
+.updraft_debugrow,
+.updraft_restore_progress,
+.updraft_progress,
+#updraft-poplog,
+#updraft-poplog-content,
+span#updraft_lastlogcontainer,
+#updraft_lastlogmessagerow {
+  background: var(--adm-bg-darker) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+#updraft-wrap .notice,
+.updraft_maincontainer .notice,
+.updraft-ad-container .updated,
+.updraft-ad-container .error,
+.udp-notice,
+#updraft-wrap .udp-info .info-content-wrapper {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+#updraft-wrap .nav-tab-wrapper .nav-tab,
+.updraft-nav-tab {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text-muted) !important;
+}
+
+#updraft-wrap .nav-tab-wrapper .nav-tab.nav-tab-active,
+.updraft-nav-tab.nav-tab-active {
+  background: var(--adm-surface-1) !important;
+  color: var(--adm-text) !important;
+  border-bottom-color: var(--adm-surface-1) !important;
+}
+
+.updraft_next_scheduled_backups_wrapper,
+.updraft_next_scheduled_entity,
+.updraft_backup_btn_wrapper,
+.updraft_exclude_container,
+.updraft_include_container,
+.updraft_migrate_widget_temporary_clone_stage0_container,
+.updraft_migrate_widget_migration_stage0_container {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+.updraft_migrate_widget_module_content header,
+.updraft_simple_migrate_widget_module_content header,
+#updraft_migrate_tab_alt header {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+}
+
+.updraft-input-error-message {
+  color: var(--adm-danger) !important;
+}
+
+.updraftplus_clone_status,
+.updraftplus_migration_status {
+  color: var(--adm-warning) !important;
+}

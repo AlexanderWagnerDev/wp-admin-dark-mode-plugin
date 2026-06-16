@@ -1,0 +1,239 @@
+/*
+ * DarkAdmin plugin styles: Yoast SEO
+ * Based on wordpress-seo/trunk/css/dist (monorepo, general-page, metabox, yst_plugin_tools).
+ */
+
+body[class*="wpseo"],
+body.toplevel_page_wpseo_dashboard,
+body[class*="yst_page_"] {
+  --yoast-color-default: var(--adm-text);
+  --yoast-color-default-darker: var(--adm-text);
+  --yoast-color-dark: var(--adm-text);
+  --yoast-color-label: var(--adm-text);
+  --yoast-color-label-help: var(--adm-text-muted);
+  --yoast-color-inactive-text: var(--adm-text-muted);
+  --yoast-color-inactive-grey: var(--adm-text-soft);
+  --yoast-color-inactive-grey-light: var(--adm-surface-2);
+  --yoast-color-secondary: var(--adm-surface-2);
+  --yoast-color-secondary-darker: var(--adm-surface-3);
+  --yoast-color-white: var(--adm-surface-1);
+  --yoast-color-border: var(--adm-border);
+  --yoast-color-border--default: var(--adm-border);
+  --yoast-color-link: var(--adm-link);
+  --yoast-color-primary-lighter: color-mix(in srgb, var(--adm-primary) 25%, var(--adm-surface-1));
+  --yoast-border-default: 1px solid var(--adm-border);
+}
+
+.yoast .yst-root,
+.yst-root {
+  --yoast-color-default: var(--adm-text);
+  --yoast-color-dark: var(--adm-text);
+  --yoast-color-label: var(--adm-text);
+  --yoast-color-label-help: var(--adm-text-muted);
+  --yoast-color-secondary: var(--adm-surface-2);
+  --yoast-color-secondary-darker: var(--adm-surface-3);
+  --yoast-color-white: var(--adm-surface-1);
+  --yoast-color-border: var(--adm-border);
+  --yoast-color-border--default: var(--adm-border);
+  --yoast-color-link: var(--adm-link);
+  --yoast-border-default: 1px solid var(--adm-border);
+  color: var(--adm-text) !important;
+}
+
+.yoast.yoast,
+.wpseo-admin-page,
+.wpseo_content_wrapper,
+.wpseo_table_page,
+#wpseo_meta.postbox,
+.wpseo-metabox,
+.wpseo-metabox-content,
+#wpseo-dashboard-overview.postbox,
+.wpseo-taxonomy-metabox-postbox,
+.yoast-general-page-notice,
+.yoast-webinar-dashboard,
+.yoast-settings-section,
+.yoast-settings-section__content {
+  color: var(--adm-text) !important;
+}
+
+.wpseo-admin-page .wpseo_content_wrapper,
+.wpseo_table_page,
+.yoast .yst-root,
+body.toplevel_page_wpseo_dashboard #wpcontent {
+  background: var(--adm-bg) !important;
+  color: var(--adm-text) !important;
+}
+
+.yoast .yst-box,
+.yoast .yst-paper,
+.yoast .yst-card,
+.yoast .yst-modal,
+.wpseo_content_wrapper .paper,
+.wpseo-metabox .paper,
+.yoast-general-page-notice,
+.yoast-webinar-dashboard {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+  box-shadow: none !important;
+}
+
+.yoast .yst-title,
+.yoast .yst-label,
+.yoast .yst-headline,
+.yoast h1,
+.yoast h2,
+.yoast h3,
+.wpseo-admin-page h1,
+.wpseo-admin-page h2,
+.wpseo_content_wrapper h2,
+.wpseo_content_wrapper h3,
+#wpseo_meta .hndle,
+.yst_plugin_tools h2 {
+  color: var(--adm-text) !important;
+}
+
+.yoast p,
+.yoast .yst-text,
+.yoast .yst-description,
+.wpseo_content_wrapper p,
+.wpseo-metabox p,
+.yst-replacevar__help {
+  color: var(--adm-text-muted) !important;
+}
+
+.yoast a,
+.wpseo_content_wrapper a,
+.wpseo-metabox a,
+.yst-replacevar__help a {
+  color: var(--adm-link) !important;
+}
+
+.yoast a:hover,
+.wpseo_content_wrapper a:hover {
+  color: var(--adm-link-hover) !important;
+}
+
+.yoast input[type="text"],
+.yoast input[type="url"],
+.yoast input[type="number"],
+.yoast input[type="search"],
+.yoast input[type="email"],
+.yoast input[type="password"],
+.yoast select,
+.yoast textarea,
+.wpseo_content_wrapper input[type="text"],
+.wpseo_content_wrapper input[type="url"],
+.wpseo_content_wrapper select,
+.wpseo_content_wrapper textarea,
+.wpseo-metabox input[type="text"],
+.wpseo-metabox textarea,
+.yst-text-input,
+.yst-select {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+.yoast input:focus,
+.yoast select:focus,
+.yoast textarea:focus,
+.wpseo_content_wrapper input:focus,
+.wpseo_content_wrapper textarea:focus {
+  border-color: var(--adm-border-focus) !important;
+  box-shadow: 0 0 0 1px var(--adm-border-focus) !important;
+}
+
+.yoast .yst-button--primary,
+.yoast .yoast-button-primary,
+.wpseo_content_wrapper .button-primary,
+.yst-button.yst-button--primary {
+  background: var(--adm-primary) !important;
+  border-color: var(--adm-primary) !important;
+  color: var(--adm-text-on-primary) !important;
+}
+
+.yoast .yst-button--secondary,
+.yoast .yoast-button-secondary,
+.wpseo_content_wrapper .button,
+.wpseo_content_wrapper .button-secondary,
+.yst-button.yst-button--secondary {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+.yoast table.widefat,
+.wpseo_content_wrapper table.widefat,
+.wpseo_table_page table.widefat,
+.yst-table {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+.yoast table.widefat th,
+.yoast table.widefat td,
+.wpseo_content_wrapper table.widefat th,
+.wpseo_content_wrapper table.widefat td {
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+.yoast .yst-notice,
+.yoast .notice,
+.wpseo_content_wrapper .notice,
+.yoast-migrated-notice {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+.yoast .yst-tabs [role="tab"],
+.yoast .yst-tab-list button,
+.yst-nav-tab {
+  background: var(--adm-surface-2) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text-muted) !important;
+}
+
+.yoast .yst-tabs [aria-selected="true"],
+.yoast .yst-tab-list button[aria-selected="true"],
+.yst-nav-tab--active {
+  background: var(--adm-surface-1) !important;
+  color: var(--adm-text) !important;
+  border-bottom-color: var(--adm-primary) !important;
+}
+
+.yoast .yst-toggle,
+.yoast .yst-toggle__track,
+.yst-toggle__track {
+  background: var(--adm-surface-3) !important;
+  border-color: var(--adm-border) !important;
+}
+
+.yoast .yst-toggle[aria-checked="true"] .yst-toggle__track {
+  background: var(--adm-primary) !important;
+}
+
+.yoast .yst-tooltip,
+.yoast .yst-popover {
+  background: var(--adm-surface-1) !important;
+  border-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+.yoast .yst-badge,
+.yoast .yst-tag {
+  background: var(--adm-surface-2) !important;
+  color: var(--adm-text) !important;
+  border-color: var(--adm-border) !important;
+}
+
+#wpseo-metabox-root,
+#yoast-seo-schema-graph,
+.yoast-sidebar,
+.yoast-sidebar__section {
+  background: var(--adm-surface-1) !important;
+  color: var(--adm-text) !important;
+}

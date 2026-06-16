@@ -30,6 +30,8 @@ function darkadmin_settings_page(): void {
 	$allowed          = array_map( 'intval', (array) get_option( 'darkadmin_allowed_users', array() ) );
 	$user_access_mode = get_option( 'darkadmin_user_access_mode', 'all' );
 	$excluded_pages   = get_option( 'darkadmin_excluded_pages', '' );
+	$plugins_enabled  = (array) get_option( 'darkadmin_plugins', array() );
+	$plugin_registry  = darkadmin_plugin_registry();
 
 	$var_map         = darkadmin_css_variable_map();
 	$defaults        = $preset_colors;
@@ -318,6 +320,54 @@ function darkadmin_settings_page(): void {
 					<p class="adm-field-desc" style="margin-top:10px;">
 						<span class="dashicons dashicons-info" style="font-size:14px;width:14px;height:14px;vertical-align:middle;"></span>
 						<?php esc_html_e( 'Administrators are not listed here — they always have dark mode active.', 'darkadmin-dark-mode-for-adminpanel' ); ?>
+					</p>
+				</div>
+			</div>
+
+			<!-- Plugins -->
+			<div class="adm-card">
+				<div class="adm-card-header">
+					<span class="dashicons dashicons-admin-plugins"></span>
+					<h2><?php esc_html_e( 'Plugins', 'darkadmin-dark-mode-for-adminpanel' ); ?></h2>
+				</div>
+				<div class="adm-card-body">
+					<p class="adm-card-description">
+						<?php esc_html_e( 'Enable dedicated dark styles for popular plugins. Only installed plugins can be activated.', 'darkadmin-dark-mode-for-adminpanel' ); ?>
+					</p>
+
+					<div class="adm-plugin-grid">
+						<input type="hidden" name="darkadmin_plugins[]" value="" />
+						<?php foreach ( $plugin_registry as $slug => $meta ) : ?>
+							<?php
+							$is_installed = darkadmin_plugin_is_installed( $slug );
+							$is_checked   = in_array( $slug, $plugins_enabled, true );
+							?>
+							<label class="adm-plugin-item<?php echo esc_attr( $is_installed ? '' : ' is-unavailable' ); ?>">
+								<input
+									type="checkbox"
+									name="darkadmin_plugins[]"
+									value="<?php echo esc_attr( $slug ); ?>"
+									<?php checked( $is_checked ); ?>
+									<?php disabled( ! $is_installed ); ?>
+								/>
+								<span class="adm-plugin-info">
+									<strong><?php echo esc_html( $meta['label'] ); ?></strong>
+									<span><?php echo esc_html( $meta['description'] ); ?></span>
+								</span>
+								<span class="adm-plugin-status <?php echo esc_attr( $is_installed ? 'is-installed' : 'is-missing' ); ?>">
+									<?php
+									echo $is_installed
+										? esc_html__( 'Installed', 'darkadmin-dark-mode-for-adminpanel' )
+										: esc_html__( 'Not installed', 'darkadmin-dark-mode-for-adminpanel' );
+									?>
+								</span>
+							</label>
+						<?php endforeach; ?>
+					</div>
+
+					<p class="adm-field-desc" style="margin-top:10px;">
+						<span class="dashicons dashicons-info" style="font-size:14px;width:14px;height:14px;vertical-align:middle;"></span>
+						<?php esc_html_e( 'Plugin styles load after the main dark theme and use your color variables.', 'darkadmin-dark-mode-for-adminpanel' ); ?>
 					</p>
 				</div>
 			</div>

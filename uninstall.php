@@ -19,4 +19,5 @@ delete_option( 'darkadmin_allowed_users' );
 delete_option( 'darkadmin_user_access_mode' );
 delete_option( 'darkadmin_preset' );
 delete_option( 'darkadmin_excluded_pages' );
+delete_option( 'darkadmin_plugins' );
 delete_option( 'darkadmin_db_version' );
