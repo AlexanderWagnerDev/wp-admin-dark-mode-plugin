@@ -7,15 +7,23 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ---
 ## [0.3.0] - 2026-06-16
 
+### Added
+- **Plugins** settings section: enable dedicated dark styles per third-party plugin
+- Plugin-specific stylesheets in `assets/css/plugins/` for Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize, and Contact Form 7
+- Plugin registry (`includes/plugins.php`) and `darkadmin_plugins` option; styles load after the main dark theme using `--adm-*` tokens
+
 ### Changed
 - Modern preset is now the default for new installations (WP 7.0 design language)
 - Renamed "Default" preset to "Classic" (WP 6.x dark theme)
 - Existing installations keep the Classic preset after upgrade
+- Preset reset buttons renamed to "Restore Preset Layout" / "Restore Preset Colors"
+- Settings saved notice uses a per-user transient instead of `$_GET['settings-updated']`
+- JavaScript UI strings load exclusively via `darkadminI18n` (no English fallbacks in `settings.js`)
+- Translation files (`.pot`, `de_DE`, `de_DE_formal`, `en_US`) updated for all 0.3.0 strings
 - Tested up to WordPress 7.0
 
 ### Fixed
 - Dark Mode and Auto Dark Mode toggles can now be turned off reliably
-- Settings saved notice now appears after saving
 - Live color preview uses correct CSS variable names (`surface1` → `--adm-surface-1`, etc.)
 - Color/layout sanitization respects the active preset
 - Classic preset: sidebar color pickers now apply via `--adm-sidebar-*` tokens in `darkadmin-dark.css`

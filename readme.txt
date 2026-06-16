@@ -22,6 +22,7 @@ Features:
 * Token-based design system for backgrounds, text, borders, buttons and states
 * Auto Dark Mode: automatically darkens bright plugin backgrounds not covered by the stylesheet
 * Preset Themes: Modern (WP 7.0, default) and Classic (WP 6.x) color palettes
+* Plugins: optional dark styles for Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize, and Contact Form 7
 * Per-user Dark Mode access control (Include / Exclude) with empty-state UI when no non-admin users exist
 * Excluded Pages: specify admin pages where dark mode should not be applied
 
@@ -51,14 +52,20 @@ An optional second toggle that uses JavaScript to dynamically darken bright back
 
 == Changelog ==
 = 0.3.0 =
+* Added: Plugins settings section with optional dark styles for Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize, and Contact Form 7
+* Added: Plugin-specific CSS in assets/css/plugins/ (uses your --adm-* color tokens)
 * Modern preset is now the default for new installations (WP 7.0 design language)
 * Renamed "Default" preset to "Classic" (WP 6.x dark theme)
 * Existing installations keep the Classic preset after upgrade
+* Preset reset buttons renamed to "Restore Preset Layout" / "Restore Preset Colors"
+* Settings saved notice uses a per-user transient instead of $_GET query parameters
+* JavaScript UI strings load exclusively via darkadminI18n (no English fallbacks)
+* Updated translation files for all 0.3.0 strings
 * Fixed: Dark Mode and Auto Dark Mode toggles can now be turned off reliably
-* Fixed: Settings saved notice now appears after saving
 * Fixed: Live color preview uses correct CSS variable names
 * Fixed: Color/layout sanitization respects the active preset
 * Classic preset: sidebar color pickers now apply via `--adm-sidebar-*` tokens
+* Modern preset: added missing Thickbox modal and plugin-install-tab styles
 * Tested up to WordPress 7.0
 
 = 0.2.2 =

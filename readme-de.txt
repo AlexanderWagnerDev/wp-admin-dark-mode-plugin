@@ -22,6 +22,7 @@ Funktionen:
 * Token-basiertes Design-System für Hintergründe, Texte, Rahmen, Buttons und Statusfarben
 * Auto Dark Mode: Verdunkelt automatisch helle Plugin-Hintergründe, die vom Stylesheet nicht abgedeckt werden
 * Preset-Themes: Modern (WP 7.0, Standard) und Classic (WP 6.x) Farbpaletten
+* Plugins: optionale Dark-Mode-Stile für Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize und Contact Form 7
 * Benutzerspezifische Dark-Mode-Zugriffskontrolle (Einschließen / Ausschließen) mit Empty-State-UI wenn keine Nicht-Admin-Benutzer vorhanden sind
 * Ausgeschlossene Seiten: Admin-Seiten angeben, auf denen Dark Mode nicht angewendet werden soll
 
@@ -51,14 +52,20 @@ Ein optionaler zweiter Schalter, der JavaScript verwendet, um helle Hintergründ
 
 == Changelog ==
 = 0.3.0 =
+* Neu: Plugins-Einstellungsbereich mit optionalen Dark-Mode-Stilen für Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize und Contact Form 7
+* Neu: Plugin-spezifisches CSS in assets/css/plugins/ (nutzt deine --adm-*-Farbvariablen)
 * Modern-Preset ist jetzt Standard für Neuinstallationen (WP-7.0-Design)
 * „Default“-Preset in „Classic“ umbenannt (WP-6.x-Dark-Theme)
 * Bestehende Installationen behalten nach dem Update das Classic-Preset
+* Preset-Reset-Buttons umbenannt in „Preset-Layout wiederherstellen“ / „Preset-Farben wiederherstellen“
+* Erfolgsmeldung nach dem Speichern nutzt einen Transient pro Benutzer statt $_GET-Parameter
+* JavaScript-UI-Texte ausschließlich über darkadminI18n (keine englischen Fallback-Strings)
+* Übersetzungsdateien für alle 0.3.0-Strings aktualisiert
 * Fix: Dark-Mode- und Auto-Dark-Mode-Toggles lassen sich zuverlässig deaktivieren
-* Fix: Erfolgsmeldung nach dem Speichern erscheint wieder
 * Fix: Live-Farbvorschau nutzt korrekte CSS-Variablennamen
 * Fix: Farb-/Layout-Sanitization respektiert das aktive Preset
 * Classic-Preset: Sidebar-Farbwähler wirken nun über `--adm-sidebar-*`-Tokens
+* Modern-Preset: fehlende Thickbox-Modal- und Plugin-Install-Tab-Stile ergänzt
 * Getestet bis WordPress 7.0
 
 = 0.2.2 =

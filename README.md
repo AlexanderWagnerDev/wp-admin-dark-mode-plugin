@@ -21,6 +21,7 @@ A simple, lightweight Dark Mode plugin for the WordPress Admin Dashboard with fu
 - Token-based design system for backgrounds, text, borders, buttons and states
 - Auto Dark Mode: automatically darkens bright plugin backgrounds not covered by the stylesheet
 - Preset Themes: Modern (WP 7.0, default) and Classic (WP 6.x) color palettes
+- **Plugins**: optional dedicated dark styles for Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize, and Contact Form 7
 - Per-user Dark Mode access control (Include / Exclude) with empty-state UI when no non-admin users exist
 - Excluded Pages: specify admin pages where dark mode should not be applied
 
@@ -50,18 +51,27 @@ A simple, lightweight Dark Mode plugin for the WordPress Admin Dashboard with fu
 
 ## [0.3.0] - 2026-06-16
 
+### Added
+- **Plugins** settings section: enable dedicated dark styles per third-party plugin
+- Plugin-specific stylesheets in `assets/css/plugins/` for Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize, and Contact Form 7
+- Plugin registry (`includes/plugins.php`) and `darkadmin_plugins` option
+
 ### Changed
 - Modern preset is now the default for new installations (WP 7.0 design language)
 - Renamed "Default" preset to "Classic" (WP 6.x dark theme)
 - Existing installations keep the Classic preset after upgrade
+- Preset reset buttons renamed to "Restore Preset Layout" / "Restore Preset Colors"
+- Settings saved notice uses a per-user transient instead of `$_GET['settings-updated']`
+- JavaScript UI strings load exclusively via `darkadminI18n` (no English fallbacks in `settings.js`)
+- Translation files updated for all 0.3.0 strings
 - Tested up to WordPress 7.0
 
 ### Fixed
 - Dark Mode and Auto Dark Mode toggles can now be turned off reliably
-- Settings saved notice now appears after saving
 - Live color preview uses correct CSS variable names
 - Color/layout sanitization respects the active preset
 - Classic preset: sidebar color pickers now apply via `--adm-sidebar-*` tokens
+- Modern preset: added missing Thickbox modal and plugin-install-tab styles
 
 ## [0.2.1] - 2026-03-28
 
@@ -223,6 +233,7 @@ Ein einfaches, schlankes Dark-Mode-Plugin für das WordPress Admin-Dashboard mit
 - Token-basiertes Design-System für Hintergründe, Texte, Rahmen, Buttons und Statusfarben
 - Auto Dark Mode: Verdunkelt automatisch helle Plugin-Hintergründe, die vom Stylesheet nicht abgedeckt werden
 - Preset-Themes: Modern (WP 7.0, Standard) und Classic (WP 6.x) Farbpaletten
+- **Plugins**: optionale Dark-Mode-Stile für Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize und Contact Form 7
 - Benutzerspezifische Dark-Mode-Zugriffskontrolle (Einschließen / Ausschließen) mit Empty-State-UI wenn keine Nicht-Admin-Benutzer vorhanden sind
 - Ausgeschlossene Seiten: Admin-Seiten angeben, auf denen Dark Mode nicht angewendet werden soll
 
@@ -240,18 +251,27 @@ Ein einfaches, schlankes Dark-Mode-Plugin für das WordPress Admin-Dashboard mit
 
 ## 0.3.0
 
+### Hinzugefügt
+- **Plugins**-Einstellungsbereich: dedizierte Dark-Mode-Stile pro Drittanbieter-Plugin
+- Plugin-spezifische Stylesheets in `assets/css/plugins/` für Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize und Contact Form 7
+- Plugin-Registry (`includes/plugins.php`) und `darkadmin_plugins`-Option
+
 ### Geändert
 - Modern-Preset ist jetzt Standard für Neuinstallationen (WP-7.0-Design)
 - „Default“-Preset in „Classic“ umbenannt (WP-6.x-Dark-Theme)
 - Bestehende Installationen behalten nach dem Update das Classic-Preset
+- Preset-Reset-Buttons umbenannt in „Preset-Layout wiederherstellen“ / „Preset-Farben wiederherstellen“
+- Erfolgsmeldung nach dem Speichern nutzt einen Transient pro Benutzer statt `$_GET['settings-updated']`
+- JavaScript-UI-Texte ausschließlich über `darkadminI18n` (keine englischen Fallback-Strings in `settings.js`)
+- Übersetzungsdateien für alle 0.3.0-Strings aktualisiert
 - Getestet bis WordPress 7.0
 
 ### Behoben
 - Dark-Mode- und Auto-Dark-Mode-Toggles lassen sich zuverlässig deaktivieren
-- Erfolgsmeldung nach dem Speichern erscheint wieder
 - Live-Farbvorschau nutzt korrekte CSS-Variablennamen
 - Farb-/Layout-Sanitization respektiert das aktive Preset
 - Classic-Preset: Sidebar-Farbwähler wirken nun über `--adm-sidebar-*`-Tokens
+- Modern-Preset: fehlende Thickbox-Modal- und Plugin-Install-Tab-Stile ergänzt
 
 ## 0.2.1
 
