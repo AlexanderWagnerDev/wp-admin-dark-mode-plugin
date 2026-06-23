@@ -1,0 +1,76 @@
+name: Format Markdown Files
+
+on:
+  schedule:
+    - cron: 0 0 * * *
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  format-markdown:
+    name: Lint & Format Markdown
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Install Prettier & Markdown plugins
+        run: |
+          npm install --no-save \
+            prettier@3 \
+            @prettier/plugin-xml
+
+      - name: Run Prettier on all Markdown files
+        run: |
+          npx prettier \
+            --write \
+            --parser markdown \
+            --prose-wrap always \
+            --print-width 100 \
+            --tab-width 2 \
+            --end-of-line lf \
+            "**/*.md" \
+            "!node_modules/**" \
+            "!vendor/**"
+
+      - name: Install markdownlint-cli2
+        run: npm install --no-save markdownlint-cli2
+
+      - name: Create markdownlint config
+        run: |
+          cat > .markdownlint.json << 'EOF'
+          {
+            "default": true,
+            "MD013": { "line_length": 120, "tables": false, "code_blocks": false },
+            "MD033": false,
+            "MD041": false,
+            "MD024": { "siblings_only": true }
+          }
+          EOF
+
+      - name: Run markdownlint and auto-fix
+        run: |
+          npx markdownlint-cli2 --fix "**/*.md" "#node_modules" "#vendor" || true
+
+      - name: Commit formatted files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add $(git ls-files --modified --others --exclude-standard '*.md')
+          if git diff --cached --quiet; then
+            echo "No changes to commit – skipping."
+          else
+            git commit -m "style(markdown): auto-format Markdown files [skip ci]"
+            git push
+          fi
