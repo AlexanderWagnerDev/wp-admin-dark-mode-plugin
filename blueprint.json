@@ -1,0 +1,21 @@
+{
+    "landingPage": "/wp-admin/options-general.php?page=darkadmin",
+    "preferredVersions": {
+        "php": "8.5",
+        "wp": "latest"
+    },
+    "steps": [
+        {
+            "step": "login",
+            "username": "admin",
+            "password": "password"
+        },
+        {
+            "step": "setSiteOptions",
+            "options": {
+                "darkadmin_dark_mode_enabled": "1",
+                "darkadmin_preset": "modern"
+            }
+        }
+    ]
+}
