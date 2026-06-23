@@ -3,7 +3,7 @@
 [![WordPress](https://img.shields.io/badge/WordPress-6.3%2B-blue)](https://wordpress.org/)
 [![PHP](https://img.shields.io/badge/PHP-8.0%2B-blue)](https://www.php.net/)
 [![License](https://img.shields.io/badge/License-GPLv2%2B-green)](https://www.gnu.org/licenses/gpl-2.0.html)
-[![Version](https://img.shields.io/badge/Version-0.3.1-orange)](https://github.com/AlexanderWagnerDev/wp-darkadmin-plugin)
+[![Version](https://img.shields.io/badge/Version-0.3.2-orange)](https://github.com/AlexanderWagnerDev/wp-darkadmin-plugin)
 
 <img src="DarkAdmin-Logo.png" alt="DarkAdmin-Logo" width="250px"/>
 
@@ -51,6 +51,13 @@ customization and Auto Dark Mode support.
 ---
 
 ## Changelog
+
+## [0.3.2] - 2026-06-23
+
+### Fixed
+
+- WordPress AI & Connectors: page header (admin-ui Page) readable in dark mode; styles load after
+  `wp-components`
 
 ## [0.3.1] - 2026-06-23
 
@@ -328,6 +335,13 @@ Farbanpassung und Auto-Dark-Mode-Unterstützung.
 ---
 
 ## Changelog
+
+## 0.3.2
+
+### Behoben
+
+- WordPress AI & Connectors: Seitenkopf (admin-ui Page) im Dark Mode lesbar; Styles laden nach
+  `wp-components`
 
 ## 0.3.1
 

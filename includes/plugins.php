@@ -123,7 +123,7 @@ function darkadmin_enqueue_wordpress_ai_styles(): void {
 	wp_enqueue_style(
 		'darkadmin-wordpress-ai',
 		DARKADMIN_URL . 'assets/css/plugins/wordpress-ai.css',
-		array( 'darkadmin-darkmode' ),
+		array( 'darkadmin-darkmode', 'wp-components' ),
 		DARKADMIN_VERSION
 	);
 }

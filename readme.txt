@@ -4,7 +4,7 @@ Tags: dark mode, admin, dashboard, ui, accessibility
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 0.3.1
+Stable tag: 0.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,9 @@ An optional second toggle that uses JavaScript to dynamically darken bright back
 4. Dashboard - Dark Mode active
 
 == Changelog ==
+= 0.3.2 =
+* Fixed: WordPress AI & Connectors page header (admin-ui Page) — title and subtitle are readable in dark mode; styles load after wp-components
+
 = 0.3.1 =
 * Added: Dark mode styles for WordPress AI & Connectors (Connectors screen, AI plugin settings, Connector Approvals, AI Request Logs)
 * Added: wordpress-ai.css with WPDS token remapping; auto-loads on matching admin screens when dark mode is active

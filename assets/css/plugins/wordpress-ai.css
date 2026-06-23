@@ -51,6 +51,47 @@ body.settings_page_ai-wp-admin .boot-layout-container {
   color: var(--adm-text) !important;
 }
 
+/* @wordpress/admin-ui Page — wp-components sets light WPDS values on these globals. */
+body.options-connectors .admin-ui-page,
+body.settings_page_ai-wp-admin .admin-ui-page,
+body.tools_page_ai-connector-approval .admin-ui-page,
+body.tools_page_ai-request-logs .admin-ui-page {
+  background-color: var(--adm-bg) !important;
+  color: var(--adm-text) !important;
+}
+
+body.options-connectors .admin-ui-page__header,
+body.settings_page_ai-wp-admin .admin-ui-page__header,
+body.tools_page_ai-connector-approval .admin-ui-page__header,
+body.tools_page_ai-request-logs .admin-ui-page__header {
+  background: var(--adm-surface-2) !important;
+  border-block-end-color: var(--adm-border) !important;
+  border-bottom-color: var(--adm-border) !important;
+  color: var(--adm-text) !important;
+}
+
+body.options-connectors .admin-ui-page__header-title,
+body.settings_page_ai-wp-admin .admin-ui-page__header-title,
+body.tools_page_ai-connector-approval .admin-ui-page__header-title,
+body.tools_page_ai-request-logs .admin-ui-page__header-title {
+  color: var(--adm-text) !important;
+}
+
+body.options-connectors .admin-ui-page__header-subtitle,
+body.settings_page_ai-wp-admin .admin-ui-page__header-subtitle,
+body.tools_page_ai-connector-approval .admin-ui-page__header-subtitle,
+body.tools_page_ai-request-logs .admin-ui-page__header-subtitle {
+  color: var(--adm-text-muted) !important;
+}
+
+body.options-connectors .admin-ui-page__content,
+body.settings_page_ai-wp-admin .admin-ui-page__content,
+body.tools_page_ai-connector-approval .admin-ui-page__content,
+body.tools_page_ai-request-logs .admin-ui-page__content {
+  background-color: var(--adm-bg) !important;
+  color: var(--adm-text) !important;
+}
+
 /* WPDS token remap — Boot pages, admin-ui Page and DataViews. */
 body.options-connectors,
 body.settings_page_ai-wp-admin,
@@ -60,6 +101,10 @@ body.options-connectors [data-wpds-root-provider="true"],
 body.settings_page_ai-wp-admin [data-wpds-root-provider="true"],
 body.tools_page_ai-connector-approval [data-wpds-root-provider="true"],
 body.tools_page_ai-request-logs [data-wpds-root-provider="true"],
+body.options-connectors .admin-ui-page,
+body.settings_page_ai-wp-admin .admin-ui-page,
+body.tools_page_ai-connector-approval .admin-ui-page,
+body.tools_page_ai-request-logs .admin-ui-page,
 body.options-connectors .boot-layout-container,
 body.settings_page_ai-wp-admin .boot-layout-container,
 body.tools_page_ai-connector-approval .ai-request-logs__page,

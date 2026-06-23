@@ -6,6 +6,14 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.3.2] - 2026-06-23
+
+### Fixed
+
+- WordPress AI & Connectors: page header (`.admin-ui-page`, `.admin-ui-page__header`) no longer
+  shows unreadable light-on-light text in dark mode; explicit `--adm-*` overrides and
+  `wp-components` stylesheet dependency for correct load order
+
 ## [0.3.1] - 2026-06-23
 
 ### Added
