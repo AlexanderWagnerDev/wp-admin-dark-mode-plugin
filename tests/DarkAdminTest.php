@@ -338,7 +338,16 @@ class DarkAdminTest extends WP_UnitTestCase {
             define( 'WPSEO_VERSION', '1.0.0' );
         }
 
-        $this->assertSame( [], darkadmin_sanitize_plugins( [ 'yoast' ] ) );
+        $enabled = array_values(
+            array_filter(
+                array_keys( darkadmin_plugin_registry() ),
+                static function ( string $slug ): bool {
+                    return 'wordpress-ai' !== $slug && darkadmin_plugin_is_installed( $slug );
+                }
+            )
+        );
+
+        $this->assertSame( [], darkadmin_sanitize_plugins( $enabled ) );
     }
 
     public function test_plugin_styles_enabled_when_installed_and_not_disabled(): void {

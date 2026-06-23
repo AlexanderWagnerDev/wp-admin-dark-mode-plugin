@@ -339,10 +339,10 @@ function darkadmin_settings_page(): void {
 						<input type="hidden" name="darkadmin_plugins[]" value="" />
 						<?php foreach ( $plugin_registry as $slug => $meta ) : ?>
 							<?php
-							$is_installed   = darkadmin_plugin_is_installed( $slug );
+							$is_installed    = darkadmin_plugin_is_installed( $slug );
 							$is_wordpress_ai = 'wordpress-ai' === $slug;
-							$is_checked     = $is_wordpress_ai || ( $is_installed && ! in_array( $slug, $plugins_disabled, true ) );
-							$item_class     = 'adm-plugin-item';
+							$is_checked      = $is_wordpress_ai || ( $is_installed && ! in_array( $slug, $plugins_disabled, true ) );
+							$item_class      = 'adm-plugin-item';
 							if ( ! $is_installed ) {
 								$item_class .= ' is-unavailable';
 							} elseif ( $is_wordpress_ai ) {
