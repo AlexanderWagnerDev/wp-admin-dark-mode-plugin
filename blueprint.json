@@ -11,6 +11,16 @@
             "password": "password"
         },
         {
+            "step": "installPlugin",
+            "pluginData": {
+                "resource": "wordpress.org/plugins",
+                "slug": "darkadmin-dark-mode-for-adminpanel"
+            },
+            "options": {
+                "activate": true
+            }
+        },
+        {
             "step": "setSiteOptions",
             "options": {
                 "darkadmin_dark_mode_enabled": "1",
