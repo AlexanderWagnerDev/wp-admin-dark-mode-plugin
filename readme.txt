@@ -4,7 +4,7 @@ Tags: dark mode, admin, dashboard, ui, accessibility
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 0.3.0
+Stable tag: 0.3.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,7 +22,7 @@ Features:
 * Token-based design system for backgrounds, text, borders, buttons and states
 * Auto Dark Mode: automatically darkens bright plugin backgrounds not covered by the stylesheet
 * Preset Themes: Modern (WP 7.0, default) and Classic (WP 6.x) color palettes
-* Plugins: optional dark styles for Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize, and Contact Form 7
+* Plugins: optional dark styles for Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize, Contact Form 7, and WordPress AI & Connectors
 * Per-user Dark Mode access control (Include / Exclude) with empty-state UI when no non-admin users exist
 * Excluded Pages: specify admin pages where dark mode should not be applied
 
@@ -51,6 +51,12 @@ An optional second toggle that uses JavaScript to dynamically darken bright back
 4. Dashboard - Dark Mode active
 
 == Changelog ==
+= 0.3.1 =
+* Added: Dark mode styles for WordPress AI & Connectors (Connectors screen, AI plugin settings, Connector Approvals, AI Request Logs)
+* Added: wordpress-ai.css with WPDS token remapping; auto-loads on matching admin screens when dark mode is active
+* Added: Plugin registry entry WordPress AI & Connectors in Settings > DarkAdmin > Plugins
+* Updated translation files for 0.3.1 strings
+
 = 0.3.0 =
 * Added: Plugins settings section with optional dark styles for Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize, and Contact Form 7
 * Added: Plugin-specific CSS in assets/css/plugins/ (uses your --adm-* color tokens)

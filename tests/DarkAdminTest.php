@@ -305,8 +305,20 @@ class DarkAdminTest extends WP_UnitTestCase {
     // Plugin styles
     // -------------------------------------------------------------------------
 
-    public function test_plugin_registry_has_five_entries(): void {
-        $this->assertCount( 5, darkadmin_plugin_registry() );
+    public function test_plugin_registry_has_six_entries(): void {
+        $this->assertCount( 6, darkadmin_plugin_registry() );
+    }
+
+    public function test_wordpress_ai_screen_ids_include_all_ai_admin_pages(): void {
+        $ids = darkadmin_wordpress_ai_screen_ids();
+        $this->assertContains( 'options-connectors', $ids );
+        $this->assertContains( 'settings_page_ai-wp-admin', $ids );
+        $this->assertContains( 'tools_page_ai-connector-approval', $ids );
+        $this->assertContains( 'tools_page_ai-request-logs', $ids );
+    }
+
+    public function test_boot_wpds_screen_ids_alias_matches_wordpress_ai_screen_ids(): void {
+        $this->assertSame( darkadmin_wordpress_ai_screen_ids(), darkadmin_boot_wpds_screen_ids() );
     }
 
     public function test_sanitize_plugins_filters_unknown_slugs(): void {

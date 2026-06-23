@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DarkAdmin - Dark Mode for Adminpanel\n"
 "Report-Msgid-Bugs-To: https://alexanderwagnerdev.com\n"
-"POT-Creation-Date: 2026-06-16 12:00+0200\n"
-"PO-Revision-Date: 2026-06-16 12:00+0200\n"
+"POT-Creation-Date: 2026-06-23 12:00+0200\n"
+"PO-Revision-Date: 2026-06-23 12:00+0200\n"
 "Last-Translator: AlexanderWagnerDev <info@alexanderwagnerdev.com>\n"
 "Language-Team: AlexanderWagnerDev <info@alexanderwagnerdev.com>\n"
 "Language: de_DE_formal\n"
@@ -167,6 +167,14 @@ msgstr "Datenbank-, Cache- und Bildoptimierungs-Oberfläche."
 #: includes/plugins.php
 msgid "Form editor, tag generator, integration and list table."
 msgstr "Formular-Editor, Tag-Generator, Integration und Formularliste."
+
+#: includes/plugins.php
+msgid "WordPress AI & Connectors"
+msgstr "WordPress AI & Konnektoren"
+
+#: includes/plugins.php
+msgid "Connectors, AI settings, connector approvals and request logs."
+msgstr "Konnektoren, AI-Einstellungen, Connector-Freigaben und Request-Logs."
 
 #: includes/settings-page.php
 msgid "Layout & Spacing"

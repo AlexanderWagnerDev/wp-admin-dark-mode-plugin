@@ -4,7 +4,7 @@ Tags: dark mode, admin, dashboard, ui, accessibility
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 0.3.0
+Stable tag: 0.3.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,7 +22,7 @@ Funktionen:
 * Token-basiertes Design-System für Hintergründe, Texte, Rahmen, Buttons und Statusfarben
 * Auto Dark Mode: Verdunkelt automatisch helle Plugin-Hintergründe, die vom Stylesheet nicht abgedeckt werden
 * Preset-Themes: Modern (WP 7.0, Standard) und Classic (WP 6.x) Farbpaletten
-* Plugins: optionale Dark-Mode-Stile für Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize und Contact Form 7
+* Plugins: optionale Dark-Mode-Stile für Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize, Contact Form 7 und WordPress AI & Connectors
 * Benutzerspezifische Dark-Mode-Zugriffskontrolle (Einschließen / Ausschließen) mit Empty-State-UI wenn keine Nicht-Admin-Benutzer vorhanden sind
 * Ausgeschlossene Seiten: Admin-Seiten angeben, auf denen Dark Mode nicht angewendet werden soll
 
@@ -51,6 +51,12 @@ Ein optionaler zweiter Schalter, der JavaScript verwendet, um helle Hintergründ
 4. Dashboard - Dark Mode aktiv
 
 == Changelog ==
+= 0.3.1 =
+* Neu: Dark-Mode-Stile für WordPress AI & Connectors (Konnektoren, AI-Einstellungen, Connector-Freigaben, Request-Logs)
+* Neu: wordpress-ai.css mit WPDS-Token-Remapping; lädt automatisch auf passenden Admin-Seiten bei aktivem Dark Mode
+* Neu: Plugin-Registry-Eintrag WordPress AI & Connectors unter Einstellungen > DarkAdmin > Plugins
+* Übersetzungsdateien für 0.3.1-Strings aktualisiert
+
 = 0.3.0 =
 * Neu: Plugins-Einstellungsbereich mit optionalen Dark-Mode-Stilen für Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize und Contact Form 7
 * Neu: Plugin-spezifisches CSS in assets/css/plugins/ (nutzt deine --adm-*-Farbvariablen)

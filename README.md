@@ -3,7 +3,7 @@
 [![WordPress](https://img.shields.io/badge/WordPress-6.3%2B-blue)](https://wordpress.org/)
 [![PHP](https://img.shields.io/badge/PHP-8.0%2B-blue)](https://www.php.net/)
 [![License](https://img.shields.io/badge/License-GPLv2%2B-green)](https://www.gnu.org/licenses/gpl-2.0.html)
-[![Version](https://img.shields.io/badge/Version-0.3.0-orange)](https://github.com/AlexanderWagnerDev/wp-darkadmin-plugin)
+[![Version](https://img.shields.io/badge/Version-0.3.1-orange)](https://github.com/AlexanderWagnerDev/wp-darkadmin-plugin)
 
 <img src="DarkAdmin-Logo.png" alt="DarkAdmin-Logo" width="250px"/>
 
@@ -21,7 +21,7 @@ A simple, lightweight Dark Mode plugin for the WordPress Admin Dashboard with fu
 - Token-based design system for backgrounds, text, borders, buttons and states
 - Auto Dark Mode: automatically darkens bright plugin backgrounds not covered by the stylesheet
 - Preset Themes: Modern (WP 7.0, default) and Classic (WP 6.x) color palettes
-- **Plugins**: optional dedicated dark styles for Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize, and Contact Form 7
+- **Plugins**: optional dedicated dark styles for Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize, Contact Form 7, and WordPress AI & Connectors
 - Per-user Dark Mode access control (Include / Exclude) with empty-state UI when no non-admin users exist
 - Excluded Pages: specify admin pages where dark mode should not be applied
 
@@ -48,6 +48,16 @@ A simple, lightweight Dark Mode plugin for the WordPress Admin Dashboard with fu
 ---
 
 ## Changelog
+
+## [0.3.1] - 2026-06-23
+
+### Added
+- Dark mode styles for **WordPress AI & Connectors**: Connectors screen, AI plugin settings, Connector Approvals, and AI Request Logs
+- `wordpress-ai.css` with WPDS token remapping; auto-loads on matching admin screens when dark mode is active
+- Plugin registry entry **WordPress AI & Connectors** in Settings > DarkAdmin > Plugins
+
+### Changed
+- Translation files updated for 0.3.1 strings
 
 ## [0.3.0] - 2026-06-16
 
@@ -233,7 +243,7 @@ Ein einfaches, schlankes Dark-Mode-Plugin für das WordPress Admin-Dashboard mit
 - Token-basiertes Design-System für Hintergründe, Texte, Rahmen, Buttons und Statusfarben
 - Auto Dark Mode: Verdunkelt automatisch helle Plugin-Hintergründe, die vom Stylesheet nicht abgedeckt werden
 - Preset-Themes: Modern (WP 7.0, Standard) und Classic (WP 6.x) Farbpaletten
-- **Plugins**: optionale Dark-Mode-Stile für Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize und Contact Form 7
+- **Plugins**: optionale Dark-Mode-Stile für Yoast SEO, Wordfence, UpdraftPlus, WP-Optimize, Contact Form 7 und WordPress AI & Connectors
 - Benutzerspezifische Dark-Mode-Zugriffskontrolle (Einschließen / Ausschließen) mit Empty-State-UI wenn keine Nicht-Admin-Benutzer vorhanden sind
 - Ausgeschlossene Seiten: Admin-Seiten angeben, auf denen Dark Mode nicht angewendet werden soll
 
@@ -248,6 +258,16 @@ Ein einfaches, schlankes Dark-Mode-Plugin für das WordPress Admin-Dashboard mit
 ---
 
 ## Changelog
+
+## 0.3.1
+
+### Hinzugefügt
+- Dark-Mode-Stile für **WordPress AI & Connectors**: Konnektoren, AI-Einstellungen, Connector-Freigaben und Request-Logs
+- `wordpress-ai.css` mit WPDS-Token-Remapping; lädt automatisch auf passenden Admin-Seiten bei aktivem Dark Mode
+- Plugin-Registry-Eintrag **WordPress AI & Connectors** unter Einstellungen > DarkAdmin > Plugins
+
+### Geändert
+- Übersetzungsdateien für 0.3.1-Strings aktualisiert
 
 ## 0.3.0
 

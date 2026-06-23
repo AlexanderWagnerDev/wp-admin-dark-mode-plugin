@@ -344,6 +344,7 @@ add_action(
 		}
 
 		darkadmin_enqueue_plugin_styles();
+		darkadmin_enqueue_wordpress_ai_styles();
 	}
 );
 

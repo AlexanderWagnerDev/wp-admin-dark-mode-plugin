@@ -62,7 +62,79 @@ function darkadmin_plugin_registry(): array {
 				return defined( 'WPCF7_VERSION' );
 			},
 		),
+		'wordpress-ai'   => array(
+			'label'        => __( 'WordPress AI & Connectors', 'darkadmin-dark-mode-for-adminpanel' ),
+			'description'  => __( 'Connectors, AI settings, connector approvals and request logs.', 'darkadmin-dark-mode-for-adminpanel' ),
+			'css'          => 'wordpress-ai.css',
+			'is_installed' => static function (): bool {
+				return function_exists( 'wp_options_connectors_wp_admin_render_page' )
+					|| defined( 'WPAI_VERSION' );
+			},
+		),
 	);
+}
+
+/**
+ * Screen IDs for WordPress AI admin pages (Boot/WPDS and Tools screens).
+ *
+ * @return string[]
+ */
+function darkadmin_wordpress_ai_screen_ids(): array {
+	return array(
+		'options-connectors',
+		'settings_page_ai-wp-admin',
+		'tools_page_ai-connector-approval',
+		'tools_page_ai-request-logs',
+	);
+}
+
+/**
+ * Whether the current admin screen is a WordPress AI page covered by wordpress-ai.css.
+ *
+ * @return bool
+ */
+function darkadmin_is_wordpress_ai_admin_screen(): bool {
+	$screen = get_current_screen();
+	if ( ! $screen instanceof WP_Screen ) {
+		return false;
+	}
+
+	return in_array( $screen->id, darkadmin_wordpress_ai_screen_ids(), true );
+}
+
+/**
+ * Enqueues WordPress AI dark styles on Connectors, AI settings and Tools screens.
+ *
+ * Loaded automatically on matching screens when dark mode is active so users
+ * do not need to enable the optional plugin stylesheet separately.
+ *
+ * @return void
+ */
+function darkadmin_enqueue_wordpress_ai_styles(): void {
+	if ( ! darkadmin_is_wordpress_ai_admin_screen() ) {
+		return;
+	}
+
+	$path = DARKADMIN_PATH . 'assets/css/plugins/wordpress-ai.css';
+	if ( ! is_readable( $path ) ) {
+		return;
+	}
+
+	wp_enqueue_style(
+		'darkadmin-wordpress-ai',
+		DARKADMIN_URL . 'assets/css/plugins/wordpress-ai.css',
+		array( 'darkadmin-darkmode' ),
+		DARKADMIN_VERSION
+	);
+}
+
+/**
+ * Back-compat alias for darkadmin_wordpress_ai_screen_ids().
+ *
+ * @return string[]
+ */
+function darkadmin_boot_wpds_screen_ids(): array {
+	return darkadmin_wordpress_ai_screen_ids();
 }
 
 /**

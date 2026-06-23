@@ -5,6 +5,16 @@ All notable changes to DarkAdmin - Dark Mode for Adminpanel are documented in th
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
+## [0.3.1] - 2026-06-23
+
+### Added
+- Dark mode styles for WordPress AI & Connectors: Connectors screen (`options-connectors.php`), AI plugin settings (`page=ai-wp-admin`), Connector Approvals and AI Request Logs (Tools screens)
+- `assets/css/plugins/wordpress-ai.css` with WPDS token remapping and AI Request Logs UI overrides; loads automatically on matching admin screens when dark mode is active
+- Plugin registry entry **WordPress AI & Connectors** in Settings > DarkAdmin > Plugins
+
+### Changed
+- Translation files (`.pot`, `de_DE`, `de_DE_formal`, `en_US`) updated for 0.3.1 strings
+
 ## [0.3.0] - 2026-06-16
 
 ### Added
