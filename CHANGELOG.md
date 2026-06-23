@@ -13,6 +13,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Plugin registry entry **WordPress AI & Connectors** in Settings > DarkAdmin > Plugins
 
 ### Changed
+- Third-party plugin styles load automatically when the plugin is installed (opt-out via Settings > Plugins instead of opt-in)
 - Translation files (`.pot`, `de_DE`, `de_DE_formal`, `en_US`) updated for 0.3.1 strings
 
 ## [0.3.0] - 2026-06-16

@@ -133,8 +133,12 @@ msgid "Plugins"
 msgstr "Plugins"
 
 #: includes/settings-page.php
-msgid "Enable dedicated dark styles for popular plugins. Only installed plugins can be activated."
-msgstr "Dedizierte Dark-Mode-Stile für beliebte Plugins aktivieren. Nur installierte Plugins können aktiviert werden."
+msgid "Dark styles load automatically for installed plugins. Uncheck a plugin to disable its styles."
+msgstr "Dark-Mode-Stile werden für installierte Plugins automatisch geladen. Deaktivieren Sie ein Plugin per Checkbox, um dessen Stile zu deaktivieren."
+
+#: includes/settings-page.php
+msgid "Automatic"
+msgstr "Automatisch"
 
 #: includes/settings-page.php
 msgid "Installed"

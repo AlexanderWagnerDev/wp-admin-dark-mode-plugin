@@ -321,12 +321,49 @@ class DarkAdminTest extends WP_UnitTestCase {
         $this->assertSame( darkadmin_wordpress_ai_screen_ids(), darkadmin_boot_wpds_screen_ids() );
     }
 
-    public function test_sanitize_plugins_filters_unknown_slugs(): void {
-        $result = darkadmin_sanitize_plugins( [ 'yoast', 'invalid', 'wordfence' ] );
-        $this->assertSame( [ 'yoast', 'wordfence' ], $result );
+    public function test_sanitize_plugins_stores_disabled_slugs_for_unchecked_installed_plugins(): void {
+        if ( ! defined( 'WPSEO_VERSION' ) ) {
+            define( 'WPSEO_VERSION', '1.0.0' );
+        }
+        if ( ! defined( 'WORDFENCE_VERSION' ) ) {
+            define( 'WORDFENCE_VERSION', '1.0.0' );
+        }
+
+        $result = darkadmin_sanitize_plugins( [ 'yoast', 'invalid' ] );
+        $this->assertSame( [ 'wordfence' ], $result );
     }
 
-    public function test_sanitize_plugins_returns_empty_for_empty_input(): void {
-        $this->assertSame( [], darkadmin_sanitize_plugins( [] ) );
+    public function test_sanitize_plugins_returns_empty_when_all_installed_are_enabled(): void {
+        if ( ! defined( 'WPSEO_VERSION' ) ) {
+            define( 'WPSEO_VERSION', '1.0.0' );
+        }
+
+        $this->assertSame( [], darkadmin_sanitize_plugins( [ 'yoast' ] ) );
+    }
+
+    public function test_plugin_styles_enabled_when_installed_and_not_disabled(): void {
+        if ( ! defined( 'WPSEO_VERSION' ) ) {
+            define( 'WPSEO_VERSION', '1.0.0' );
+        }
+
+        update_option( 'darkadmin_plugins', [] );
+        $this->assertTrue( darkadmin_plugin_styles_enabled( 'yoast' ) );
+    }
+
+    public function test_plugin_styles_disabled_when_slug_is_in_disabled_list(): void {
+        if ( ! defined( 'WPSEO_VERSION' ) ) {
+            define( 'WPSEO_VERSION', '1.0.0' );
+        }
+
+        update_option( 'darkadmin_plugins', [ 'yoast' ] );
+        $this->assertFalse( darkadmin_plugin_styles_enabled( 'yoast' ) );
+    }
+
+    public function test_wordpress_ai_is_never_loaded_via_plugin_styles_helper(): void {
+        if ( ! defined( 'WPAI_VERSION' ) ) {
+            define( 'WPAI_VERSION', '1.0.0' );
+        }
+
+        $this->assertFalse( darkadmin_plugin_styles_enabled( 'wordpress-ai' ) );
     }
 }

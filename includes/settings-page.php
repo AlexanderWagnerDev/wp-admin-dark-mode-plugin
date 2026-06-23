@@ -30,7 +30,7 @@ function darkadmin_settings_page(): void {
 	$allowed          = array_map( 'intval', (array) get_option( 'darkadmin_allowed_users', array() ) );
 	$user_access_mode = get_option( 'darkadmin_user_access_mode', 'all' );
 	$excluded_pages   = get_option( 'darkadmin_excluded_pages', '' );
-	$plugins_enabled  = (array) get_option( 'darkadmin_plugins', array() );
+	$plugins_disabled = darkadmin_plugins_disabled();
 	$plugin_registry  = darkadmin_plugin_registry();
 
 	$var_map         = darkadmin_css_variable_map();
@@ -332,23 +332,30 @@ function darkadmin_settings_page(): void {
 				</div>
 				<div class="adm-card-body">
 					<p class="adm-card-description">
-						<?php esc_html_e( 'Enable dedicated dark styles for popular plugins. Only installed plugins can be activated.', 'darkadmin-dark-mode-for-adminpanel' ); ?>
+						<?php esc_html_e( 'Dark styles load automatically for installed plugins. Uncheck a plugin to disable its styles.', 'darkadmin-dark-mode-for-adminpanel' ); ?>
 					</p>
 
 					<div class="adm-plugin-grid">
 						<input type="hidden" name="darkadmin_plugins[]" value="" />
 						<?php foreach ( $plugin_registry as $slug => $meta ) : ?>
 							<?php
-							$is_installed = darkadmin_plugin_is_installed( $slug );
-							$is_checked   = in_array( $slug, $plugins_enabled, true );
+							$is_installed   = darkadmin_plugin_is_installed( $slug );
+							$is_wordpress_ai = 'wordpress-ai' === $slug;
+							$is_checked     = $is_wordpress_ai || ( $is_installed && ! in_array( $slug, $plugins_disabled, true ) );
+							$item_class     = 'adm-plugin-item';
+							if ( ! $is_installed ) {
+								$item_class .= ' is-unavailable';
+							} elseif ( $is_wordpress_ai ) {
+								$item_class .= ' is-automatic';
+							}
 							?>
-							<label class="adm-plugin-item<?php echo esc_attr( $is_installed ? '' : ' is-unavailable' ); ?>">
+							<label class="<?php echo esc_attr( $item_class ); ?>">
 								<input
 									type="checkbox"
 									name="darkadmin_plugins[]"
 									value="<?php echo esc_attr( $slug ); ?>"
 									<?php checked( $is_checked ); ?>
-									<?php disabled( ! $is_installed ); ?>
+									<?php disabled( ! $is_installed || $is_wordpress_ai ); ?>
 								/>
 								<span class="adm-plugin-info">
 									<strong><?php echo esc_html( $meta['label'] ); ?></strong>
@@ -356,9 +363,13 @@ function darkadmin_settings_page(): void {
 								</span>
 								<span class="adm-plugin-status <?php echo esc_attr( $is_installed ? 'is-installed' : 'is-missing' ); ?>">
 									<?php
-									echo $is_installed
-										? esc_html__( 'Installed', 'darkadmin-dark-mode-for-adminpanel' )
-										: esc_html__( 'Not installed', 'darkadmin-dark-mode-for-adminpanel' );
+									if ( $is_wordpress_ai && $is_installed ) {
+										esc_html_e( 'Automatic', 'darkadmin-dark-mode-for-adminpanel' );
+									} elseif ( $is_installed ) {
+										esc_html_e( 'Installed', 'darkadmin-dark-mode-for-adminpanel' );
+									} else {
+										esc_html_e( 'Not installed', 'darkadmin-dark-mode-for-adminpanel' );
+									}
 									?>
 								</span>
 							</label>

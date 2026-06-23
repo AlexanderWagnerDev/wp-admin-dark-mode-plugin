@@ -153,34 +153,75 @@ function darkadmin_plugin_is_installed( string $slug ): bool {
 }
 
 /**
- * Sanitize callback for darkadmin_plugins.
+ * Returns plugin slugs whose dedicated dark styles are disabled in settings.
  *
- * @param mixed $value Raw input.
+ * @return string[]
+ */
+function darkadmin_plugins_disabled(): array {
+	return (array) get_option( 'darkadmin_plugins', array() );
+}
+
+/**
+ * Whether dedicated dark styles should load for a registry slug.
+ *
+ * @param string $slug Plugin style slug.
+ * @return bool
+ */
+function darkadmin_plugin_styles_enabled( string $slug ): bool {
+	if ( 'wordpress-ai' === $slug ) {
+		return false;
+	}
+	if ( ! darkadmin_plugin_is_installed( $slug ) ) {
+		return false;
+	}
+
+	return ! in_array( $slug, darkadmin_plugins_disabled(), true );
+}
+
+/**
+ * Sanitize callback for darkadmin_plugins (stores disabled slugs).
+ *
+ * The settings form submits checked plugins as enabled; unchecked installed
+ * plugins are persisted as disabled.
+ *
+ * @param mixed $value Raw input (enabled slugs from checkboxes).
  * @return string[]
  */
 function darkadmin_sanitize_plugins( $value ): array {
 	$allowed = array_keys( darkadmin_plugin_registry() );
-	$slugs   = array_map( 'sanitize_key', (array) $value );
-	$slugs   = array_values( array_filter( $slugs ) );
-	return array_values( array_intersect( $slugs, $allowed ) );
+	$enabled = array_map( 'sanitize_key', (array) $value );
+	$enabled = array_values( array_filter( $enabled ) );
+	$enabled = array_values( array_intersect( $enabled, $allowed ) );
+
+	$disabled = array();
+	foreach ( darkadmin_plugin_registry() as $slug => $meta ) {
+		if ( 'wordpress-ai' === $slug ) {
+			continue;
+		}
+		if ( ! darkadmin_plugin_is_installed( $slug ) ) {
+			continue;
+		}
+		if ( ! in_array( $slug, $enabled, true ) ) {
+			$disabled[] = $slug;
+		}
+	}
+
+	return $disabled;
 }
 
 /**
- * Enqueues plugin stylesheets for enabled, installed plugins.
+ * Enqueues plugin stylesheets for installed plugins (opt-out via settings).
+ *
+ * WordPress AI styles are loaded separately on matching admin screens only.
  *
  * @return void
  */
 function darkadmin_enqueue_plugin_styles(): void {
-	$enabled = (array) get_option( 'darkadmin_plugins', array() );
-	if ( empty( $enabled ) ) {
-		return;
-	}
-
 	foreach ( darkadmin_plugin_registry() as $slug => $meta ) {
-		if ( ! in_array( $slug, $enabled, true ) ) {
+		if ( 'wordpress-ai' === $slug ) {
 			continue;
 		}
-		if ( ! darkadmin_plugin_is_installed( $slug ) ) {
+		if ( ! darkadmin_plugin_styles_enabled( $slug ) ) {
 			continue;
 		}
 

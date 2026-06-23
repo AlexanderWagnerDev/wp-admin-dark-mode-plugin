@@ -40,20 +40,27 @@ require_once DARKADMIN_PATH . 'includes/settings-page.php';
 add_action(
 	'admin_init',
 	function () {
-		if ( version_compare( (string) get_option( 'darkadmin_db_version', '0' ), '0.3.0', '>=' ) ) {
-			return;
+		$db_version = (string) get_option( 'darkadmin_db_version', '0' );
+
+		if ( version_compare( $db_version, '0.3.0', '<' ) ) {
+			$preset = get_option( 'darkadmin_preset' );
+
+			if ( 'default' === $preset ) {
+				update_option( 'darkadmin_preset', 'classic' );
+			} elseif ( false === $preset && darkadmin_is_existing_install() ) {
+				// Pre-0.3.0 installs without a saved preset were using the classic palette.
+				update_option( 'darkadmin_preset', 'classic' );
+			}
+
+			$db_version = '0.3.0';
+			update_option( 'darkadmin_db_version', $db_version );
 		}
 
-		$preset = get_option( 'darkadmin_preset' );
-
-		if ( 'default' === $preset ) {
-			update_option( 'darkadmin_preset', 'classic' );
-		} elseif ( false === $preset && darkadmin_is_existing_install() ) {
-			// Pre-0.3.0 installs without a saved preset were using the classic palette.
-			update_option( 'darkadmin_preset', 'classic' );
+		if ( version_compare( $db_version, '0.3.1', '<' ) ) {
+			// Former opt-in list becomes opt-out; default is styles on for all installed plugins.
+			update_option( 'darkadmin_plugins', array() );
+			update_option( 'darkadmin_db_version', '0.3.1' );
 		}
-
-		update_option( 'darkadmin_db_version', '0.3.0' );
 	}
 );
 
